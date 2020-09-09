@@ -1,0 +1,111 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{01mosfet}
+
+% Start Here
+\chapter{MOSFET}
+
+\section*{回顾}
+
+MOS 的晶体电流公式:
+
+线性区时： 
+
+\[
+I_d = \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th} - \frac{1}{2} V_{ds}) V_{ds} 
+\]
+
+饱和区时：
+
+\[
+I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
+\]
+
+\section{线性区：电阻}
+
+在线性区满足 \(V_{DS} < V_{GS} - V_{th}\)，当沟道打开时，沟道高度与 \(V_{gs}\) 成比例，通过面积法理解电流中的 \(V_{ds}/2 \) 来源。
+
+小信号的导通电阻求解为：
+
+\[
+R = \frac{\pp{V}}{\pp{I}} \approx \frac{1}{\mu_0 C_{ox} \dfrac{W}{L} (V_{gs} - V_{th}) }  
+\]
+
+
+电子迁移率大概是 \(\mu_n \approx 600 \text{cm}^2/Vs\)， \(\mu_p \approx 250 \text{cm}^2/Vs\) 。 栅氧层电容 \(C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}\) ，基本可以按照特征尺寸 \(L_{min}\) 估计栅氧厚度 \(t_{ox} = \dfrac{L_{min}}{50}\) 。一般使用 \(\text{cm}^2\) 相关的单位。定义工艺量 \(KP_{n} = \mu_n C_{ox,n}\)。
+
+根据以上的知识可以对 MOSFET 的电阻进行快速的估算。工艺越小，由于特征尺寸小，电阻更小； PMOS 由于迁移率小，电阻更大。
+
+\section{饱和区：放大器}
+
+在 \(V_{ds} > V_{gs} - V_{th}\) 时，进入饱和区。对于\(I_d\)公式，如何理解其系数 \(1/2\) 以及平方项：
+
+
+\[
+I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
+\]
+
+同样是通过沟道图理解， \(V_{ds}\) 最多造成 \(V_{gs} - V_{th}\) 的影响，沟道越长，调制效应越小。
+
+其跨导定义如下，最后一种形式最常见，需要记忆：和 \(I_d\) 直接相关，商为能量效率。
+
+\[
+\begin{aligned}
+    g_m = \frac{\pp{I_d}}{\pp{V_{gs}}} &= \mu_0 C_{ox} \frac{W}{L}(V_{gs} - V_{th}) \\
+    &= \sqrt{{2 I_d \cdot \mu_0 C_{ox} \frac{W}{L}}\\
+    &= \frac{2 I_d}{V_{gs} - V_{th}}
+\end{aligned}
+\]
+
+可以看到，跨导和漏极电流有着密切的要求，对于 \(g_m \propto \sqrt{I_d}\) 在测试中尺寸是固定的，对于 \(g_m \propto I_d\) 在设计中偏置固定。
+
+其输出电阻 \(r_0 = V_{ds} / I_d \approx 1 / (\lambda I_d)\) 。\(\lambda = 1/(V_E \cdot L)\) , \(V_E\) 是工艺相关的量，\(L\) 是沟道长度。一般来说，\(V_{E,n} = 4 \text{V/}\mu mL\)，\(L = 1 \mu m\)
+
+\subsection{单晶体管放大器}
+
+对于共源放大器：
+
+\[A = g_m r_0 = \frac{2 I_d}{V_{gs} - V_{th}} \cdot \frac{V_E L}{I_D} = \frac{2 V_E L}{V_{gs} - V_{th}}\]
+
+其中 \(V_{gs} - V_{th} \approx 0.2 V\)
+
+运算放大器的设计存在 Trade-off 如 \tabref{tab:01:1}：对于 \(g_m \approx \frac{2 I_{ds}}{V_{gs} - V_{th}}\) ，\(A = \dfrac{2 V_E L}{V_{gs} - V_{th}}\)，跨导越大，速度越快。
+
+\begin{table}[htb]
+    \centering
+    \caption{Trade-off}\label{tab:01:1}
+    \begin{tabular}{lll}
+        \hline
+        & 高增益  & 高速   \\ \hline
+\(V_{gs}-V_{th}\) & down & up   \\
+\(L\)             & up   & down \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{弱反型区}
+
+对于弱反型区有，其中 \(n > 1\) 
+
+\[I_{d,wi} = I_{d0} \frac{W}{L} e^{\frac{V_{gs}}{nkT/q}}\]
+
+\[g_{m,wi} = I_{d,wi} \frac{1}{n k T / q}\]
+
+场效应管是一个水平的 BJT 三极管，漏极的反向偏置相册二极管，栅级电压的增加会降低二极管的电势壁垒，主要电流为扩散电流而不是漂移电流，导电的通道中电势几乎不变，但是离子浓度成线性变化。
+
+\[I_{d,wi} = I_{d0} \frac{W}{L} e^{\frac{V_{gs}}{nU_T}} \cdot \left[1 - exp(-\frac{V_{ds}}{U_T})\right]\] 
+
+对 \(V_{ds} > 4 U_T\) 称为饱和，最后一项可以忽略。利用强反型区和弱反型区跨导相等时的电压条件，可以计算其交界点，约为\(V_{gs}-V_{th} = 2 n k T / q \approx 70 mV \)，这是和工艺独立的。此时电流约为零点几个微安。保证 \(V_{gs} - V_{th} > 0.2 V\) 可以保证不同工艺中均在强反型区工作。
+
+对于强反型区能量效率为 \(2 / (V_{gs}-V_{th})\)，一般为20，弱反型区的效率几乎是一个常数。
+
+\section{弱反型区以及强反型区：EKV 模型}
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 

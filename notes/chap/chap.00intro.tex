@@ -1,0 +1,57 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{00intro}
+
+% Start Here
+\chapter{绪论}
+
+本门课程分为 48 学时，胡远奇老师主讲，助教为张秀丽，一般周五第二节课会进行仿真练习，成绩分配为：
+
+\begin{itemize}
+    \item 平时考核 20\%
+    \item 平时作业 40\%
+    \item 期末测试（半开卷） 40\% 
+\end{itemize}
+
+本门课程专注于电路设计而非基本的器件，会回顾重要的器件物理知识以及 CMOS 工艺，将晶体管视为黑盒，将由一系列的复杂方程表示。
+
+\section{如何成为一个好的模拟设计师}
+
+模拟设计中细节是魔鬼，需要有好奇心，了解所有的细节。要知道细节导向的可能出错的地方，要对工艺流程以及器件模型都有深入的了解。
+
+\section{内容概述}
+
+主要内容有：
+
+\begin{itemize}
+    \item 晶体管特性
+    \begin{itemize}
+        \item 模型
+        \item 基本使用
+        \item 噪声
+        \item 失调与 CMRR
+    \end{itemize}
+    \item 运算放大器
+    \begin{itemize}
+        \item 稳定性
+        \item 轨到轨
+        \item Class-AB
+    \end{itemize}
+    \item ADC 以及 DAC
+    \begin{itemize}
+        \item 概念
+        \item 不同类型
+        \item 耦合方式
+        \item 实现方法
+    \end{itemize}
+\end{itemize}
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
