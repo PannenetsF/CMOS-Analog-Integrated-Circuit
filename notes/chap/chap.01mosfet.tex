@@ -101,7 +101,112 @@ I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
 
 对于强反型区能量效率为 \(2 / (V_{gs}-V_{th})\)，一般为20，弱反型区的效率几乎是一个常数。
 
+相应的，在电压过大之后，还会进入到速度饱和区。
+
 \section{弱反型区以及强反型区：EKV 模型}
+
+得到的曲线在两端可以拟合
+
+\[I(v) = K' \frac{W}{L} V_{GSTt}^2 \ln^2(1 + e^v), \text{ where } v = \frac{V_{{GST}}}{V_{GSTt}}\]
+
+\[\text{where } V_{GSTt} = (V_{GS}-V_T)_t = 2n\frac{KT}{q}\]
+
+定义反型系数\[i = \frac{I_{DS}}{I_{DSt}} = \ln^2(1+e^v)\]
+
+那么\[v = \ln(e^{\sqrt{i}}-1)\]
+
+那么\[V_{GST}=V_{GSTt} \ln(e^{\sqrt{i}}-1) \]
+
+晶体管的最大 \(g_m/I_{DS}\)出现在弱反型区，且随着反型效率上升而下降。定义归一化效率为
+
+\[GM/ID = \frac{g_m/I_{DS}}{(g_m/I_{DS})_{max}} = \frac{1-e^{\sqrt{i}}}{\sqrt{i}}\]
+
+因此需要在跨导值和跨导效率进行权衡，一般取 \(200 mV\) 。
+
+两个区之间存在一个平滑状态，一般这样定义
+
+\[\left\{\begin{aligned}
+    V_{GS} < V_{T} - 100 mV, &\text{ 弱反型}\\
+    V_{T} - 100 mV < V_{GS} < V_{T} + 100 mV, &\text{ 平滑过渡}\\
+    V_{GS} > V_{T} + 100 mV, &\text{ 强反型}\\
+\end{aligned}\right.\]
+
+
+\section{速度饱和区}
+
+\textbf{为什么饱和区电流存在 \(V_{GS}\) 平方项？}
+
+\(V_{GS}\) 控制两个量，一个是通道的深度，一个是两端的电压。
+
+\textbf{为什么速度饱和区跨导却成线性？}
+
+在速度饱和区中，电子已经以最大速度通过，电流随着两端驱动电压线性变化。将 \(C_{ox} (V_{GS} - V_T) \) 看作是导电沟道的高度。
+
+\[I_{DS,{vs}} = W C_{ox} (V_{GS} - V_T) v_{sat}\]
+
+其中 \(v_{sat} \approx 10^7 cm/s\) ，此时 \(g_{m,sat} = W C_{ox} v_{sat}\) 达到了最大。此时的 \(g_m/W\) 仅与物理常数有关，一般在模拟电路中不使用这个区域。
+
+强反型区和速度饱和区分别满足跨导关系，可以得到过渡的电压，\(V_{GS} - V_{TH} \approx 0.58 V \)。
+
+\[\left\{\begin{aligned}
+    g_{m,si} &= \mu_0 C_{ox} \frac{W}{L} (V_{GS} - V_T) \\
+    g_{m,sat} &= W C_{ox} v_{sat}
+\end{aligned}\right\}\]
+
+继续探索统一表示的可能，由于实际的跨导满足 \(g_m = \min (g_{m,si}, g_{m,sat})\)，可以如此估算：
+
+\[\frac{1}{g_m} = \frac{1}{g_{m,si}} + \frac{1}{g_{m,sat}}\]
+
+
+其他因素：
+
+Drain-Induced Barrier Lowering: 沟道过小时，会导致电压的改变直接作用到另一端。
+
+Surface Scattering: 纵向电压过大时，由于栅级的反弹，会导致电子往复纵向运动，电流减小。
+
+Impact inonize: 
+
+\section{特征频率}
+
+超过特征频率之后，就认为晶体管失去放大作用，一般由跨导和计生电容决定。跨导标志了驱动外部电压的能力。电容包括，氧化层电容，交叠区电容，PN结电容。
+
+\[C_{GS} \approx\frac{2}{3} WLC_{ox}\]
+
+\[C_{GD} = W C_{gdo}\]
+
+达到特征频率时，\(i_{GS} = i_{DS}\) 
+
+即 \[v_{GS} C_{GS} s = g_m v_{GS}\] 
+
+\[C_{GS} = \frac{2}{3} WL C_{ox}\]
+
+\[g_m = 2 K' \frac{W}{L} (V_{GS} - V_T)\]
+
+解得
+
+\[f_T = \frac{g_m}{2 \pi C_{GS}} = \frac{1}{2 \pi} \frac{3}{2n} \frac{\mu}{L^2}(V_{GS}-V_T), \text{ 反型区}\] 
+
+\[f_T = \frac{v_{sat}}{2 \pi L}, \text{ 饱和区}\]
+
+\[f_m = \frac{f_T}{1 + \alpha_{BD} } ,\text{ where} \alpha_{BD} \approx \frac{C_{BD}}{C_{ox}}\]
+
+在弱反型区：
+
+\[f_T = \frac{g_m}{2\pi C_{GS}} = \begin{aligned}
+    & \\
+    & 
+\end{aligned}\]
+
+
+\section{总结}
+
+设计思路：
+
+\begin{itemize}
+    \item 手工计算估计尺寸，精确设计依赖仿真
+    \item 时刻牢记 \(g_m/I_D\) 曲线以及大致数值
+    \item 低功耗\(g_m/V_{th} < -0.1 V\)，高增益\(g_m/V_{th} < 0.1 V\)
+\end{itemize}
 
 % End Here
 
