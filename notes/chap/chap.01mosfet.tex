@@ -97,6 +97,12 @@ I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
 
 \[I_{d,wi} = I_{d0} \frac{W}{L} e^{\frac{V_{gs}}{nU_T}} \cdot \left[1 - exp(-\frac{V_{ds}}{U_T})\right]\] 
 
+其中 
+
+\[I_{d0} = \mu_n C_{ox} (n - 1) U_t^2 e^{-V_{th}/(nV_t)}, \text{ where } U_t = \frac{kT}{q}\]
+
+\[n = \frac{C_{ox} + C_{depl}}{C_{ox}}\approx 1.5\]
+
 对 \(V_{ds} > 4 U_T\) 称为饱和，最后一项可以忽略。利用强反型区和弱反型区跨导相等时的电压条件，可以计算其交界点，约为\(V_{gs}-V_{th} = 2 n k T / q \approx 70 mV \)，这是和工艺独立的。此时电流约为零点几个微安。保证 \(V_{gs} - V_{th} > 0.2 V\) 可以保证不同工艺中均在强反型区工作。
 
 对于强反型区能量效率为 \(2 / (V_{gs}-V_{th})\)，一般为20，弱反型区的效率几乎是一个常数。
