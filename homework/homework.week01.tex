@@ -11,13 +11,94 @@
 
 \maketitle
 
-作业内容：1.1-1.45, 1.50, 1.59
+作业内容：1. 分别对于W/L=1um/1um的NMOS和PMOS，在0-1.8V的区
+域内，扫描V GS ，同时令V DS =1.8V，画出I DS ，g m 和g m /I DS 的曲
+线。（提示：改变坐标的刻度表现形式，以得到更直观的展示）
+
+2. 估算V GS =0.5V，0.8V和1.1V且V DS =1.8V时，
+W/L=1um/0.18um的NMOS的g m 和r 0 。
+
+3. 估算V GS =0.5V，0.8V和1.1V且V DS =1.8V时，
+W/L=1um/0.18um的NMOS的特征频率f T ，并通过AC仿真得
+到所求的特征频率。
 
 % \tableofcontents
 
 % Start Here
 
-\homep{1.1-1.28}
+\homep{1}
+
+如\figref{1}，\figref{2}。
+
+\qfig[1]{hw0101.pdf}{NMOS 结果绘图}
+
+\qfig[2]{hw0102.pdf}{PMOS 结果绘图}
+
+\homep{2}
+
+由 \[KP_n = \mu_n \epsilon_{ox} / t_{ox} \text{ where } t_{ox} = L_{min} / 50\]
+
+\[KP_{n,180 nm} = 300 \frac{0.35}{0.18} \approx 600 \mu A/V^2\]
+
+
+
+\(V_{gs} = 0.5 V\) 此时在弱反型区，可以认为，此时 \(n \approx 1.5\) 是合理的估算值，
+
+\[I_{d0} = \mu_n C_{ox} (n-1) V_t^2 e^{-V_{th}/(nV_t)} = 600 \mu * 0.5 * (26 m)^2 e^{-0.7/(1.5*26 m)} = 3.25 * 10^{-15} A\] 
+
+\[I_{d} = I_{d0} W/L e^{V_{gs}/(n V_t)} * (1 - e^{-V_{ds}/(V_t)}) = 6.7 * 10^{-9}A\]
+
+\[g_{m,wi} = \frac{I_{d,wi}}{nkT/q} = 60 \mu / 35 m \approx 0.19 \mu G \]
+
+
+
+\(V_{gs} = 0.8 V\) 此时进入强反型区
+
+\[I_{d} = \frac{1}{2} KP_n \frac{W}{L} (V_{gs}-V_{th})^2\approx 0.5 * 600 * 1 / 0.2 * 0.01 = 15 \mu A \] 
+
+\[g_m = KP_n \frac{W}{L} (V_{gs}-V_{th}) \approx 600 * 5 * 0.1 = 300 \mu G\] 
+
+\[r_0 = \frac{V_E L}{I_{ds}} \approx \frac{4 * 0.18}{15 * 10^{-6}} = 48 k\Omega\]
+
+
+\(V_{gs} = 1.1 V\) 此时强反型区：
+
+\[I_{d} = \frac{1}{2} KP_n \frac{W}{L} (V_{gs}-V_{th})^2\approx 0.5 * 600 * 1 / 0.2 * 0.16 = 240 \mu A \] 
+
+\[g_m = KP_n \frac{W}{L} (V_{gs}-V_{th}) \approx 600 * 5 * 0.4 = 1200 \mu G\] 
+
+\[r_0 = \frac{V_E L}{I_{ds}} \approx \frac{4 * 0.18}{240 * 10^{-6}} = 3 k\Omega\]
+
+
+\homep{3}
+
+均属于反型区，使用 
+
+\[f_T = \frac{g_m}{2 \pi C_{GS}}\]
+
+其中 \[C_{GS} = \frac{2}{3} WL C_{ox}\]
+
+对于 \(0.35 \mu m\) 工艺： 
+
+\[C_{ox, 0.35} = \frac{\epsilon_{ox}}{t_{ox}} \approx 5 * 10^{-7} F/cm^2\]
+
+而 \[t_{ox} = \frac{L_{min}}{50}\]
+
+所以 \[C_{ox, 0.18} = C_{ox, 0.35} * 35 / 18 \approx 10^{-6} F/cm^2 = 10^{-2} F/m^2\]
+
+那么 \[C_{GS} = \frac{2}{3} \mu * 0.18 \mu * 10^{-2} = 0.12 * 10^{-14} F\] 
+
+对 \(0.5 V\) ，\[f_t = 2.5 * 10^{7} Hz\]
+
+对 \(0.8 V\) ，\[f_t = 4 * 10^{10} Hz\]
+
+对 \(1.1 V\) ，\[f_t = 1.6 * 10^{11} Hz\]
+
+\qfig[3]{hw010305.png}{0.5 V 特征频率}
+
+\qfig[4]{hw010308.png}{0.8 V 特征频率}
+
+\qfig[5]{hw010311.png}{1.1 V 特征频率}
 
 
 % End Here

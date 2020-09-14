@@ -62,7 +62,7 @@ I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
 
 可以看到，跨导和漏极电流有着密切的要求，对于 \(g_m \propto \sqrt{I_d}\) 在测试中尺寸是固定的，对于 \(g_m \propto I_d\) 在设计中偏置固定。
 
-其输出电阻 \(r_0 = V_{ds} / I_d \approx 1 / (\lambda I_d)\) 。\(\lambda = 1/(V_E \cdot L)\) , \(V_E\) 是工艺相关的量，\(L\) 是沟道长度。一般来说，\(V_{E,n} = 4 \text{V/}\mu mL\)，\(L = 1 \mu m\)
+其输出电阻 \(r_0 = V_{ds} / I_d \approx 1 / (\lambda I_d)\) 。\(\lambda = 1/(V_E \cdot L)\) , \(V_E\) 是工艺相关的量，\(L\) 是沟道长度。一般来说，\(V_{E,n} = 4 \text{V/}\mu m\)，\(L = 1 \mu m\)
 
 \subsection{单晶体管放大器}
 
@@ -182,6 +182,11 @@ Impact inonize:
 
 \[g_m = 2 K' \frac{W}{L} (V_{GS} - V_T)\]
 
+其中 
+
+\[K' = \frac{\mu C_{ox}}{2 n}\]
+
+
 解得
 
 \[f_T = \frac{g_m}{2 \pi C_{GS}} = \frac{1}{2 \pi} \frac{3}{2n} \frac{\mu}{L^2}(V_{GS}-V_T), \text{ 反型区}\] 
@@ -192,10 +197,19 @@ Impact inonize:
 
 在弱反型区：
 
-\[f_T = \frac{g_m}{2\pi C_{GS}} = \begin{aligned}
-    & \\
-    & 
+\[GM/ID = \frac{g_m/I_{ds}}{(g_m // I_{ds})_{max}} = \frac{1 - e^{-\sqrt{i}}}{\sqrt{i}}, \text{ where } i = \frac{I_{ds}}{I_{dst}}\]
+
+% \[\begin{aligned}
+%     f_T = \frac{g_m}{2\pi C_{GS}} = &\frac{1}{2 \pi C_{gs}} \frac{I_{dst}}{nkT/q} \sqrt{i} (1 - e^\sqrt{i}) \\
+%     = &\frac{2 \mu k T/q}{2 \pi L^2} \sqrt{i} (1-e^\sqrt{i})
+% \end{aligned}\]
+
+\[\begin{aligned}
+    f_T = \frac{g_m}{2 \pi C_{gs}} &= \frac{1}{2 \pi C_{gs}} \frac{I_{dst}}{nkT/q}\sqrt{i}(1-e^{\sqrt{i}})\\
+    &= \frac{2 \mu kT/q}{2 \pi L^2} \sqrt{i} (1 - e^{\sqrt{i}})
 \end{aligned}\]
+
+第一部分是与尺寸有关的，第二部分与工作偏置有关。
 
 
 \section{总结}
@@ -205,7 +219,7 @@ Impact inonize:
 \begin{itemize}
     \item 手工计算估计尺寸，精确设计依赖仿真
     \item 时刻牢记 \(g_m/I_D\) 曲线以及大致数值
-    \item 低功耗\(g_m/V_{th} < -0.1 V\)，高增益\(g_m/V_{th} < 0.1 V\)
+    \item 低功耗\(V_{gs}-T_{th} < -0.1 V\)，高增益\(V_{gs}-T_{th} = 0.2 V\)，高速\(V_{gs}-T_{th} = 0.5 V\)
 \end{itemize}
 
 % End Here
