@@ -1,0 +1,108 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{02iccomp}
+
+% Start Here
+\chapter{模拟电路的基本构成}
+
+运算放大器均基于差分对。如五管放大器由电流镜、差分对以及单管放大器组成。
+
+
+\section{单管放大器}
+
+对于单管放大器来说，增益为 
+
+
+\[A_v = g_m r_o = \frac{2 I_D}{V_{ov}} \cdot \frac{V_E L}{I_D} = \frac{2 V_E L }{V_{ov}}\]
+
+其中过载电压为 \(V_{ov} = V_{gs} - V_{th}\) ，对于单管来说一般增益在 100 左右（\(V_{E} L \approx 100\) ， \(V_{ov} \approx 0.2 V\)）。若是想要高增益，可以降低其过载电压，但是会牺牲信噪 比 \(SNR\) 与跨导 \(g_m\) ；可以增大其 \(L\) 但是会牺牲速度与面积。
+
+如果只有大负载电容，其带宽是 
+
+\[BW = \frac{1}{2 \pi r_{ds} C_L}\]
+
+增益带宽积为 
+
+\[GBW = \frac{g_m}{2 \pi C_L}\]
+
+如果只有大输入电容，带宽为
+
+\[BW = \frac{1}{2 \pi R_S C_{GS}}\]
+
+增益带宽积和沟道长度 \(L\) 无关，为
+
+\[GBW = \frac{g_m r_{ds}}{2 \pi R_S C_{GS}} = f_T \cdot \frac{r_{ds}}{R_S} \propto \frac{1}{W C_{{ox}}} \cdot \frac{1}{V_{gs} - V_{th}}\]
+
+只有一个较大的反馈电容时，带宽为
+
+\[BW = \frac{1}{2 \pi R_S A_{v0}} C_F\]
+
+那么增益带宽积，和晶体管无关，只和反馈有关，为
+
+\[GBW = \frac{1}{2 \pi R_S C_F}\]
+
+Source Degeneration 是负反馈的形式如\figref{\chapname 1}，在源极添加电阻。此时 \(V_s\) 也成为电流的影响因子。
+
+\qfig[1]{0201.png}{源极反馈}
+
+其反馈为 \[(V_{in} - V_s) g_m = I_{out}\] 
+
+\[V_s = I_{out} g_m\]
+
+输入电容发生改变：
+
+\[C_{out}\] # TODO: 参考PPT
+
+\qfig[2]{0202.png}{源极反馈电容}
+
+输出电阻变化，即 \(\Delta V\) 引起的 \(\Delta I\)：
+
+\[\Delta I = \frac{\Delta V_{rs}}{R_s}\]
+
+\[R_o = r_{ds} (1 + g_m R_s) \approx A_0 R_S\] 
+
+晶体管的噪声与失配减少 \(1 + g_m R_S\) 倍， 但是 \(R_s\) 造成额外的噪声。
+
+\section{源随器}
+
+是一个电压的缓冲器， \(I_B\) 为常数，\(V_{gs}\) 为常数，\(V_{out} = V_{in} \) ，那么 \(A_v = 1\) 。
+
+由于工艺问题，PMOS 的 n 阱可以是任意电压，\(V_{gs}\) 不为常数，\(A_v < 1\)。
+
+\section{Cascode 共源共栅级}
+
+共源共栅级是一个共栅级的形式，作为电流的缓冲器。定义其跨阻增益
+
+\[A_R = v_{out} / i_{in}\]
+
+从源极向上看的电阻为 
+
+\[R_{eq} = \frac{R_{ds} + R_l}{1 + g_m R_{ds}}\]
+
+相比单晶体管，带宽变小，增益变大，增益带宽积不变。在低频区域提高了增益，没有更高的电流消耗。
+
+折叠式 Cascode 和套桶式的主要参数一致，但是功耗是两倍。
+
+调节式 Cascode 通过栅级的调控将原来的衰减一个放大系数变为两个。
+
+\section{电流镜}
+
+理想电流镜是由二极管连接晶体管和单管放大器组成的。
+
+对于二极管，输入电阻为 \(1/g_m\) ，带宽为 \(g_m / (2 \pi (C_{gs} + C_{ds})) \approx f_T / 2\)
+
+电流镜的输出阻抗是单晶体管的输出阻抗，输出精度可以描述为 
+
+\[\frac{\Delta I}{I}\]
+
+
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
