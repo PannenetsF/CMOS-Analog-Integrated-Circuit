@@ -98,7 +98,32 @@ Source Degeneration 是负反馈的形式如\figref{\chapname 1}，在源极添�
 
 \[\frac{\Delta I}{I}\]
 
+改进电流镜：输出阻抗造成输入输出电流不相等，电压余度消耗过多。
 
+低电压电流镜需要和运算放大器进行配合，开销很大。输出端的最小值仅有 0.2 V 时，不能使用 Cascode 型技术。虽然没有改变输出电阻，但是改善了系统性的失配问题。
+
+超低电压电流镜\footnote{判断是否是 Cascode ：是否均工作在饱和区}：电流晶体管在线性区，但是通过运放锁定电压。
+
+电流镜在高频时，由于倍数关系有
+\begin{equation}\begin{aligned}
+    C_{G} &=(1+B) C_{G S}+C_{D S 1} \\
+    B W &=\frac{g_{m}}{2 \pi\left(C_{G}+C_{D S 1}\right)} \\
+    & \approx f_{T} \frac{1}{(2+B)}
+\end{aligned}\end{equation}
+
+存在米勒效应。
+
+\section{差分对}
+
+差分对的本质仍然是电压输入电流输出，能效降低为单晶体管的一半。
+
+\begin{equation}\frac{ i _{ O d }}{ I _{ B }}=\frac{ v _{ ld }}{\left( V _{ GS }- V _{ T }\right)}  \sqrt{1-\frac{1}{4}\left(\frac{ v _{ ld }}{ v _{ GS }- V _{ T }}\right)^{2}}\end{equation}
+
+其中 \(V_{ld}\) 是差分输出电压，\(i_{od}\) 是输出电流， \(I_B\) 是总的直流电流。
+
+差分放大器相当于差分对 + 负载。
+
+交叉耦合对：等效差分输入电阻为 \(-1/g_m\) ，
 
 % End Here
 
