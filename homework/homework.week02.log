@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  20 SEP 2020 20:34
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  22 SEP 2020 09:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -829,12 +829,17 @@ File: figure/hw0201vthp.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 74.
+(Font)              scaled to size 12.0pt on input line 60.
  [2]
+File: figure/hw0202circuit.png Graphic file (type bmp)
+<figure/hw0202circuit.png>
+File: figure/hw0202polarpoint.png Graphic file (type bmp)
+<figure/hw0202polarpoint.png>
+ [3]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 85.
+(Font)              scaled to size 8.0pt on input line 126.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 85.
+(Font)              scaled to size 6.0pt on input line 126.
 File: figure/hw0203circuit.png Graphic file (type bmp)
 <figure/hw0203circuit.png>
 File: figure/hw0203gm.png Graphic file (type bmp)
@@ -843,26 +848,28 @@ File: figure/hw0203vin.png Graphic file (type bmp)
 <figure/hw0203vin.png>
 File: figure/hw0203vins.png Graphic file (type bmp)
 <figure/hw0203vins.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
- [3] [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
+File: figure/hw0203sub2.png Graphic file (type bmp)
+<figure/hw0203sub2.png>
+File: figure/hw0203orin.png Graphic file (type bmp)
+<figure/hw0203orin.png>
+File: figure/hw0203orin2.png Graphic file (type bmp)
+<figure/hw0203orin2.png>
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 150.
+ [4] [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 150.
  (./homework.week02.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 96.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 150.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 150.
 Package rerunfilecheck Info: File `homework.week02.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 21196 strings out of 479682
- 409081 string characters out of 5891585
+ 21231 strings out of 479682
+ 409798 string characters out of 5891585
  954420 words of memory out of 5000000
- 38092 multiletter control sequences out of 15000+600000
+ 38122 multiletter control sequences out of 15000+600000
  576709 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  69i,8n,126p,846b,558s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on homework.week02.pdf (4 pages).
+Output written on homework.week02.pdf (5 pages).

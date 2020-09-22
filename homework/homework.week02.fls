@@ -288,6 +288,13 @@ INPUT /opt/texlive2020/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT figure/hw0201vth.png
 INPUT figure/hw0201vthp.png
 OUTPUT homework.week02.xdv
+INPUT /opt/texlive2020/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
+INPUT figure/hw0202circuit.png
+INPUT figure/hw0202polarpoint.png
+INPUT /opt/texlive2020/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
+INPUT /opt/texlive2020/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
+INPUT figure/hw0203orin.png
+INPUT figure/hw0203orin2.png
 INPUT figure/hw0203circuit.png
 INPUT figure/hw0203gm.png
 INPUT figure/hw0203vin.png

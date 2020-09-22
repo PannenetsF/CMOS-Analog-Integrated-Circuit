@@ -56,6 +56,9 @@
 
 \homep{作业 2}
 
+
+\subhomep{1}
+
 对 1，3 管列式，记 \(V_x\) 为 M3 漏极电压，\(V_y\) 为 M3 源极电压：
 
 \[\begin{aligned}
@@ -67,24 +70,63 @@
 
 那么 \[V_x < V_{th} + V_y < V_B < V_{th} + V_x < V_y + 2 V_{th}\]
 
-以 \(V_th = 0.45 V\) 为基准，设置 \(V_x = 1.5 V\)， \((W/L)_1 = 20\) ，偏置电流为 \(I_d = 3 mA\)，设\(V_y = 1.2 V\)， \(V_B  = 2.2 V\)，得到 \((W/L)_3 = 75\)以此为估计进行仿真。
+% 以 \(V_th = 0.45 V\) 为基准，设置 \(V_x = 1.5 V\)， \((W/L)_1 = 20\) ，偏置电流为 \(I_d = 3 mA\)，设\(V_y = 1.2 V\)， \(V_B  = 2.2 V\)，得到 \((W/L)_3 = 75\)以此为估计进行仿真。
 
-r3 6 k r1 1.5k
+% r3 6 k r1 1.5k
+\subhomep{2}
+
+设 \(V_x = 1 V\) 以 \(V_{th} = 0.5 V\) 预估，可以使\(V_y  =0.7 V\) \(V_B = 1.4 V\) ，设置偏置电流为 \(0.1 mA\) 。据此计算得到：\((W/L)_3 = 7.2\mu / 0.18 \mu\) \((W/L)_1 = 0.56 
+\mu/0.18\mu \)
+
+最终搭建电路如 \figref{fuckcir} ，频率响应如 \figref{fuckfre}，特征频率为 \(30 M Hz\)
+
+
+\qfig[fuckcir]{hw0202circuit.png}{Cascode 电路}
+
+
+\qfig[fuckfre]{hw0202polarpoint.png}{Cascode 电路频响}
+
+手工计算：
+
+\[r_o \approx \frac{1}{\lambda I_D} \approx = \frac{1}{0.1 \cdot 0.1 / 1000} = 1e6 \Omega\]
+
+那么特征频率为
+
+\[f_t = \frac{1}{2 \pi C r_{eq}} = \frac{1}{2 \pi \cdot 100 f \cdot 50 k} = 31830988.61838 Hz = 31.8 MHz\] 
 
 \homep{作业 3} 
 
 \subhomep{1}
 
-搭建电路，如\figref{damn} ，对 \(V_{in}\) 扫描，结果如\figref{damngm}。 \(g_m = 0.94 m\) ，得到 \(0.99 g_m = 0.93\) ，图中结果为 \(V_{in} = 2 *8.5 = 17 mV\)，如\figref{damnvin}。
+搭建电路，如\figref{damn} ，对 \(V_{in}\) 扫描，结果如\figref{damngm}。 \(g_m = 1.2 m\) ，得到 \(0.99 g_m = 1.188 m\) ，图中结果为 \(V_{in} = 2 *16 = 32 mV\)，如\figref{damnvin}。
+
+
+手工计算 
+
+\[g_m=\frac{\partial \Delta I_{D}}{\partial \Delta V_{i n}}=\frac{1}{2} \mu_{n} C_{o x} \frac{W}{L} \frac{\frac{4 I_{S S}}{\mu_{n} C_{o x} W / L}-2\left(\Delta V_{i n}\right)^{2}}{\sqrt{\frac{4 I_{S S}}{\mu_{n} C_{o x} W / L}-\left(\Delta V_{i n}\right)^{2}}}\]
+
+仿真得到 \(\mu_n C_{ox} = 2 I_d / (V_{od}^2) / (W/L) = 0.00039157 = k\) ，带入得到
+
+\[g_{m,max} \sqrt{I_{ss} \mu_nC_{ox} W/L}  = 0.0017699\]
+
+% \[\]
 
 \subhomep{2}
 
-\(I = 198 u\) 时， \(V_{in} = 2 * 1.3 = 2.6 V\)。
+\(I = 198 u\) 时， \(\Delta V_{in} = 2 * 0.14 = 0.28 V\)。如\figref{198}
 
+手工计算得到
+
+\[V_{in} =\sqrt{2 I_{S S} /\left(\mu_{n} C_{o x} W / L\right)} = 0.15981 V\] 
+
+那么 \(\Delta V_{in} = 0.32 V\)
 
 \subhomep{3}
 
-此时可以认为，几乎是 \(\Delta V_{in}\) 为最大值的时候，将其扩大为 2 倍，那么根据公式 $\Delta V_{\text {in}}=\sqrt{2 I_{S S} /\left(\mu_{n} C_{o x} W / L\right)}$ 得到， \(W/L\) 变为 4 倍，即 \(W = 80 \mu m\)。
+此时可以认为，几乎是 \(\Delta V_{in}\) 为最大值的时候，将其扩大为 2 倍，那么根据公式 $\Delta V_{\text {in}}=\sqrt{2 I_{S S} /\left(\mu_{n} C_{o x} W / L\right)}$ 得到， \(W/L\) 变为 1/4 倍，即 \(W = 10 \mu m\)。
+
+分别仿真出的电压是 \(0.15V\) \(0.26V\) 如\figref{vout1} \figref{vout2}
+
 
 \qfig[damn]{hw0203circuit.png}{差动电路}
 
@@ -93,6 +135,16 @@ r3 6 k r1 1.5k
 \qfig[damnvin]{hw0203vin.png}{区间}
 
 \qfig[damnvins]{hw0203vins.png}{差分电压}
+
+
+\qfig[198]{hw0203sub2.png}{198 uA 对应电压}
+
+
+\qfig[vout1]{hw0203orin.png}{抽取电压}
+
+\qfig[vout2]{hw0203orin2.png}{抽取电压}
+
 % End Here
+
 
 \end{document}

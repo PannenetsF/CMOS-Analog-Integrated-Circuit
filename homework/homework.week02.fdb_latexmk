@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1600604560 "homework.week02.xdv" "homework.week02.pdf" "homework.week02" 1600604560
-  "homework.week02.xdv" 1600604559 13944 d4ba9f07f759ca5bab383360f55c1fc7 "xelatex"
+["xdvipdfmx"] 1600698894 "homework.week02.xdv" "homework.week02.pdf" "homework.week02" 1600698895
+  "homework.week02.xdv" 1600698894 20976 8ea7f15cad0f299b21e877fe10b649bd "xelatex"
   (generated)
   "homework.week02.pdf"
-["xelatex"] 1600604558 "homework.week02.tex" "homework.week02.xdv" "homework.week02" 1600604560
+["xelatex"] 1600698893 "homework.week02.tex" "homework.week02.xdv" "homework.week02" 1600698895
   "/opt/texlive2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/texlive2020/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/opt/texlive2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -139,16 +139,20 @@
   "figure/hw0201vth.png" 1600566145 58723 6707caead69dfd7c5cd03a5beaba23d1 ""
   "figure/hw0201vthp.png" 1600525244 51081 34778b4891797e94981b0ecb0009e5cc ""
   "figure/hw0202.png" 1600568162 12970 e4b99fd309341baefa305f6708812c05 ""
+  "figure/hw0202circuit.png" 1600696518 21692 9c29dda0f7f349ace5017b543ec13df0 ""
+  "figure/hw0202polarpoint.png" 1600696623 20526 444573aa0d950d9b106dbbb84341d88e ""
   "figure/hw0203circuit.png" 1600593743 17790 def2e04295e9a7eaebf66a73011741e0 ""
   "figure/hw0203gm.png" 1600594227 30323 1a9effc8b4bb81a74c87dd0533823a90 ""
+  "figure/hw0203orin.png" 1600698680 27857 c08a5ae625c73552190d1eb9749b22b5 ""
+  "figure/hw0203orin2.png" 1600698754 49816 6f94fc5c9ddf5e0b849eb1b323fe942e ""
   "figure/hw0203vin.png" 1600594481 10398 1324b0fa66138b1b9c53d09b81e7c5ee ""
   "figure/hw0203vins.png" 1600594696 11638 d36c48e241a3adf01c7a64d6d189d64a ""
-  "homework.week02.aux" 1600604559 2146 097ebb33e9e3f1d792641221f7ef2ac6 "xelatex"
-  "homework.week02.out" 1600604559 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "homework.week02.tex" 1600604519 2583 7d81054f7d3debecd541d1a3d5091d74 ""
-  "needed.tex" 1600075577 736 7aa2a4ccc32ceed908fa2024e4433e41 ""
+  "homework.week02.aux" 1600698894 3000 33eea1e243b00d61b5ad512e2759d034 "xelatex"
+  "homework.week02.out" 1600698894 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "homework.week02.tex" 1600698883 4407 f0f70f5c128a93782089aa97471b31e8 ""
+  "needed.tex" 1600605066 791 05e1762dc1438fd2b70fda65cab44706 ""
   (generated)
-  "homework.week02.out"
   "homework.week02.aux"
   "homework.week02.log"
+  "homework.week02.out"
   "homework.week02.xdv"
