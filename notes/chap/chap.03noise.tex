@@ -1,0 +1,77 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{03noise}
+
+% Start Here
+\chapter{噪声}
+
+为什么噪声很重要？是模拟电路中第一梯队的参数，需要借此衡量系统的精度以及稳定性。定义信噪比（Signal-to-Noise Ratio）为 
+
+\[SNR = \frac{P_{sig}}{P_{noise}}, \text{ where } P_{sig} \propto V_{DD}^2, P_{noise} \propto kT/V\]
+
+工艺的进化使得 \(SNR\) 不断下降，为了维持 \(SNR\) 那么电容也会增加，功耗就会提升。低功耗设计需要对噪声的深入理解。
+
+\section{噪声的类型}
+
+\begin{itemize}
+    \item 人为的干扰
+    \item 信号耦合，如电容、电感、基底以及键合线（wire bounding，电感纳亨级）
+    \item 电源噪声
+    \item 以上可以通过差分电路以及版图技巧来解决。
+    \item 器件噪声：电荷的不连续性造成，是根本性的噪声
+\end{itemize}
+
+\section{噪声的表现形式}
+
+时域上随机出现，通过概率表征，一般均值为 0 ，可以时域功率进行分析。在频域上在低频区出现闪烁噪声（Flicker Noise），高频区出现白噪声，使用功率谱密度分析 （\(V^2/Hz\)）。
+通过积分获得一定带宽内总的噪声。
+
+噪声因子\footnote{Noise Figure : \(NF = 10 \log F\)}，定义系统的内噪声为 \(N_a\)，增益为 \(G\)，源的噪声为 \(N_i\)：
+
+\[F = \frac{P_{noise, out}}{P_{noise, source}} = \frac{N_o}{N_i G} = \frac{N_i G + N_a}{N_i G}\]
+
+由于表现形式带有增益项，一般使用输入参考噪声进行度量。
+
+\[F = \frac{\overline{i_s}^2 + |\overline{e_n}^2 + \overline{i_n}^2|}{\overline{i_s}^2} = \frac{SNR_{out}}{SNR_{in}}\]
+
+实质上就是输出端和输入端的信噪比之比。
+
+\[F_n = F_1 + \frac{F_2 - 1}{G_1} + \cdots + \frac{F_n - 1}{G_1 G_2 \cdots G_n}\]
+
+\section{电阻热噪声}
+
+功率谱
+
+\[{\dd{}\overline{v_n^2} = 4 k T R}, \overline{\dd{i_n^2}} = 4kT/R\]
+
+对常温下 1 k电阻，\(40 nV/\sqrt{Hz}\)
+\section{晶体管噪声}
+
+饱和区的沟道电阻是和其他电阻一样的热噪声，一般 \(\gamma \approx 2/3, 1, 4/3\)分别对应 0.35， 0.18， 0.13 \(nm\)。
+
+\[\dd{\overline{i_n^2}} = 4 k T / R = 4 k T \gamma g_m\]
+
+栅级的多晶硅也存在一个电阻 \(R_G\) 。
+
+闪烁噪声 
+
+\[\dd{\overline{v_{i,eq,f}^2}} = \frac{KF_F}{WLC_{ox}^2}\frac{\dd{f}}{f}\]
+
+pMOS 噪声小，nMOS 几乎是 pMOS 的 40 倍。
+
+转角频率：偏置电流越大，白噪声越低，拐角频率就越大。
+
+\section{等效噪声}
+
+
+
+\section{}
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
