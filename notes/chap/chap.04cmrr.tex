@@ -1,0 +1,58 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{04cmrr}
+
+% Start Here
+\chapter{失调与 CMRR}
+
+\section{失调}
+
+失调电压是输出电压为 0 时的两端输入电压差。增益变小。
+
+\section{随机失调}
+
+随机失调是阈值电压的失配，符合正态分布。尺寸越大，失调越少。
+
+\[A_{vt} \~ t_{ox}\sqrt{N_B}\]
+
+
+\[\sigma _{\Delta VT} = \frac{A_{VT}}{\sqrt{WL}}\]
+
+参数 \(A_{VT}\) 在尺寸变小到一定程度之后保持不变。
+
+参数 \(K'\) 对晶体管的影响相对较小，\(W/L\) 和工艺的相关性不强。
+
+
+\section{差分对的随机失调}
+
+等效的失调电压为 
+
+\[V_{od} = \Delta R_L \frac{I_B}{2}\]
+    
+\[V_{os} = \frac{\Delta R_L }{R_L}\frac{V_{gst}}{2}\]
+
+\section{电流镜的失调}
+
+导线电阻，弱反型区 \(V_T\) 为主要，强反型区中以 \(\beta\) 为主，面积又占主要。
+
+\section{共模抑制比 CMRR\footnote{Common Mode Rejection Ration}}
+
+共模增益：差模输出比共模输入
+
+共模抑制比：差模增益比共模增益
+
+\section{系统失调}
+
+
+
+
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
