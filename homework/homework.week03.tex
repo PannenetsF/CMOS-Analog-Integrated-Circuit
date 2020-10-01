@@ -2,7 +2,7 @@
 
 \input{needed.tex}
 
-\title{CMOS模拟集成电路原理\quad 第三周作业}
+\title{CMOS模拟集成电路原理\quad 第四周作业}
 \author{范云潜 18373486}
 \institute{微电子学院 184111 班}
 \date{\zhtoday}
@@ -11,23 +11,114 @@
 
 \maketitle
 
-作业内容：
+作业内容：1. 自由确定晶体管的尺寸，通过仿真寻找NMOS和PMOS的1/f噪
+声的系数KF，以及热噪声系数 \(\gamma\)
+
+2. 对一偏置电流为100uA的五管OTA，通过晶体管的设计，使其
+等效输入噪声的80\%来源于差分对M1和M2。
 
 % \tableofcontents
-
+\listoffigures
 % Start Here
 
-\homep{nMOS 噪声测试}
+\homep{1}
 
-为了使得电路中唯一的噪声源为 MOS 管，采用理想的共源放大器
+测试平台：新建一个有源负载的单晶体管放大器，设计的长宽比以及使得两晶体管均工作在饱和区的电压偏置如\figref{p1f1}所示。按照需要分别将 nMOS 与 pMOS 的输入电压作为系统输入以及噪声的等效源，其特性如 \figref{p1f2} \figref{p1f3} ，可以确定我们的静态工作点，如\figref{p1f5}。并且，需要在低频下进行仿真来计算闪烁噪声。
 
-基本电路图 % h1p1
+核心公式为 
 
-DC 仿真测试，找到合适的静态工作点 % h1p2 
-设置为 0.2 V  % h1p3
+\[KF = \bar{V_i^2} WL C_{ox}^2 f\]
 
-之后添加 AC 仿真，
+其中 \(V_i^2 * A_v^2 = V_o^2\)
 
+\[\gamma = \frac{\bar{I^2}}{4 kT g_m}\]
+
+\qfig[p1f1]{hw03p1f1.png}{基本电路设计以及偏置}
+
+\qfig[p1f2]{hw03p1f2.png}{pMOS \(V_{out}-V_{in}\) 图像}
+
+\qfig[p1f3]{hw03p1f3.png}{nMOS \(V_{out}-V_{in}\) 图像}
+
+\qfig[p1f5]{hw03p1f5.png}{pMOS 静态工作点}
+
+\qfig[p1f6]{hw03p1f6.png}{nMOS 静态工作点}
+
+
+
+\qfig[p1f4]{hw03p1f4.png}{pMOS 噪声结果}
+
+
+\qfig[p1f7]{hw03p1f7.png}{nMOS 噪声结果}
+
+% \subhomep{\(KF\)}
+
+
+根据静态工作点获得 \(g_m\)与\(C_{gs}\) ，根据 1 Hz 的噪声分析获得 \(i_d\) 与 输出电阻 \(r_x\) 
+
+设置 pMOS 的输入为 \(V_{in}\) 并设置静态工作点为 0.8 V ，建立 AC 仿真与 NOISE 仿真，得到结果如 \figref{p1f4} ，在 1 Hz 下带入数据并换算单位得到 \(KF =4.274180e-30 C^2/cm^2\)，\(\gamma = 0.784253\)
+
+
+设置 nMOS 的输入为 \(V_{in}\) 并设置静态工作点为 0.65 V ，建立 AC 仿真与 NOISE 仿真，得到结果如 \figref{p1f7} ，在 1 Hz 下带入数据并换算单位得到 \(KF = 3.652783e-31 C^2/cm^2\)，\(\gamma = 0.654056\)
+
+最后，\(\gamma\) 值与教材较为吻合，\(KF_n\) 吻合较好，\(KF_p\) 吻合较差。
+
+
+\lstinputlisting[caption={\(\gamma\) 的计算}]{hw03/gam.m}
+
+\lstinputlisting[caption={\(KF\) 的计算}]{hw03/kf.m}
+
+\homep{2}
+
+搭建电路图如\figref{p2f1}， % p2f1 
+对共模电平进行扫描来获得合适的大信号电压如\figref{p2f2}， % p2f2 
+设置共模电平为 1.4 V ，
+通过 op 仿真确定工作区，如\figref{p2f3}， % p2f3
+全部饱和。
+
+设置静态工作点共模电压为 1.4 V 如\figref{p2f4}% p2f4 p2f5
+
+
+
+\qfig[p2f1]{hw03p2f1.png}{OTA 电路}
+
+\qfig[p2f2]{hw03p2f2.png}{OTA 扫描共模电压}
+
+\qfig[p2f3]{hw03p2f3.png}{各晶体管状态}
+核心公式为
+
+\qfig[p2f4]{hw03p2f4.png}{输出电压 DC 扫描}
+
+\[{V_{ieq}^2 = \frac{I_{out}^2}{g_m^2}} = 2 V_{in}^2 (1 + \frac{g_{m,n}}{g_{m,p}})\]
+
+所以为了使得来源于 pMOS 差分对的噪声占比 80\% 
+
+\[\frac{g_{m,n}}{g_{m,p}} = 0.25\]
+
+又 \[g_m =\sqrt{2 \mu C_{o x} \frac{W}{L} I_{D}}\]
+
+在假定其他指标不受影响的情况下，调节 \({W}:{L}\) 。
+
+那么近似有\[(W/L)_n:(W/L)_p = 1:16\]
+
+设置 pMOS 宽度为 wid 便于调节宽度，如\figref{p2f5}。% p2f5
+
+\qfig[p2f5]{hw03p2f5.png}{pMOS 宽度设为变量}
+
+设宽度为\(220n * 16 = 3520 n\)在 1 Hz 下的噪声比例为 76.712\% ，如\figref{p2f6} 。 % p2f6
+微调，设宽度为 \(3300 n\) 在 1 Hz 下噪声比例为 79.847\%，如\figref{p2f7} 。 % p2f7
+
+\qfig[p2f6]{hw03p2f6.png}{\(W_p=3520n\) 噪声输出}
+
+\qfig[p2f7]{hw03p2f7.png}{\(W_p=3300n\) 噪声输出}
+
+% n 386a 131
+
+%           p
+% 580u:cox  724a
+%         118.7
+
+% 700 cox 900a
+%     gm 137
 
 
 % End Here
