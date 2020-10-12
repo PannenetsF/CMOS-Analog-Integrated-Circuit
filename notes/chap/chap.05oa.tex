@@ -1,0 +1,21 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{05oa}
+
+% Start Here
+\chapter{运算放大器}
+
+运放需要负反馈。
+
+负反馈更换为电容就会转换为积分器。
+
+增益带宽积的计算：增益带宽积为 \(GBW\) ，增益为 \(A_v = - R_2/R_1\) 
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 

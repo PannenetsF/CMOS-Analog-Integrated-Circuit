@@ -16,7 +16,7 @@
 
 随机失调是阈值电压的失配，符合正态分布。尺寸越大，失调越少。
 
-\[A_{vt} \~ t_{ox}\sqrt{N_B}\]
+\[A_{vt} \sim t_{ox}\sqrt{N_B}\]
 
 
 \[\sigma _{\Delta VT} = \frac{A_{VT}}{\sqrt{WL}}\]
@@ -24,7 +24,6 @@
 参数 \(A_{VT}\) 在尺寸变小到一定程度之后保持不变。
 
 参数 \(K'\) 对晶体管的影响相对较小，\(W/L\) 和工艺的相关性不强。
-
 
 \section{差分对的随机失调}
 
@@ -38,13 +37,26 @@
 
 导线电阻，弱反型区 \(V_T\) 为主要，强反型区中以 \(\beta\) 为主，面积又占主要。
 
-\section{共模抑制比 CMRR\footnote{Common Mode Rejection Ration}}
+\section{共模抑制比 CMRR({Common Mode Rejection Ration})}
 
 共模增益：差模输出比共模输入
 
 共模抑制比：差模增益比共模增益
 
+减少失调就是提高 CMRR 。
+
 \section{系统失调}
+
+\section{设计守则}
+
+\begin{itemize}
+    \item 相同的温度
+    \item 中心对称
+\end{itemize}
+
+常见的电阻可以通过 S/D diffusion 、 Well 、 Poly Gate （已掺杂） 、 \textbf{Poly Resistance}\footnote{精度到 1\% ，温度的稳定性也比较高} （未掺杂） 、铝。
+
+电容方式：.18 工艺使用 MIM （金属夹住绝缘体金属）；55 nm 工艺使用 Finger 实现电容。\footnote{电容的一侧标注为弯曲，表明存在寄生电容}
 
 
 

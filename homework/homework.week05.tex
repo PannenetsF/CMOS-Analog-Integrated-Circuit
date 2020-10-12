@@ -1,0 +1,89 @@
+\documentclass[lang=cn,11pt,a4paper,cite=authoryear]{elegantpaper}
+
+\input{needed.tex}
+
+\title{CMOS模拟集成电路原理\quad 第五周作业}
+\author{范云潜 18373486}
+\institute{微电子学院 184111 班}
+\date{\zhtoday}
+
+\begin{document}
+
+\maketitle
+
+
+\tableofcontents
+
+\listoffigures
+
+\section{作业内容}
+
+对一偏置电流为100uA的五管OTA，
+共模电压为0.9V，设计晶体管的尺寸，
+1. 使其在单位增益负反馈时系统性失调小
+于0.1mV；
+
+2. 使其随机性失调的标准差（std）小于
+1mV；
+
+3. 使其共模抑制比大于 50dB。
+
+\qfig[hw]{hw05.png}{作业电路}
+
+% Start Here
+
+
+\section{系统性失调}
+
+分析 \(\Delta V_{out}\) ：
+
+\[\Delta V_{out} = R_{eq, pmos} * \Delta I_B \]
+
+\[R_{eq, pmos} = \frac{\Delta I_{ds}}{\Delta V_{ds}} = \lambda_p I_{ds, p}\]
+
+\[\Delta I_B = \lambda_n \Delta V_{ds, n} I\]
+
+因此，需要降低 \(\lambda\) ，一般来说，沟道越长，\(\lambda\) 越小。所以需要尽量增大沟道长度 \(L\) 。
+
+
+\section{随机性失调}
+
+需要使得 \(V_{gs}-V_t\) 尽量小，因此同样电流下， \(W/L\) 更大。而之前一节已经确定需要增大 \(L\) ，因此 \(W\) 也需要更大。
+
+\section{电路搭建}
+
+对于已经给定的偏置电流 \(100 \mu A\) 可以确定各个晶体管通过的电流大小，通过预估 pMOS 与 nMOS 的阈值电压，设置各个晶体管的长宽比。长宽比的设置可以通过 Aether 自带的 DC 扫描计算得到，以 pMOS 为例，搭建电路如 \figref{01} ，将参数输入到 MDE 的设置中，如 \figref{02}，得到电流扫描的图像，读取对应电流下的长宽比 \(k\) 即可。
+
+\qfig[01]{hw05f1.png}{扫描 pMOS 长宽比电路}
+
+\qfig[02]{hw05f2.png}{扫描 pMOS 长宽比 MDE 设置}
+
+根据上述方法，预估好关键电压后，确定 OTA 的各个晶体管尺寸，对差分输入为 \(0 V\) 时进行 OP 仿真，电流满足需求，如 \figref{04} 。
+
+\qfig[04]{hw05f4.png}{OTA (未进行单位增益缓冲)各管状态以及电流大小}
+
+
+\section{系统性失调验证}
+
+进一步，通过 cds\underline{ }thru 连接成单位增益负反馈电路，如\figref{08}，对其输出进行 DC 仿真，其 \(V_{in}\) 与原有值的偏离即为系统性失调。经过仿真，如 \figref{09} ，为 \(97 \mu V\) ，满足要求。
+
+\qfig[08]{hw05f8.png}{单位增益负反馈电路}
+
+\qfig[09]{hw05f9.png}{系统性失调转换到输入端为 \(97 \mu V\)} 
+
+\section{随机性失调验证}
+
+将模型切换到专用的蒙特卡洛模型，并恢复为差分电路。在 DC 仿真下对输入电压进行 400 次随机测试，可以保证最坏在 \(2 \sigma\) 范围外，如 \figref{07} ，可以得到 \(2 \sigma < 800 \mu\) ，满足要求。
+
+\qfig[07]{hw05f7.png}{蒙特卡洛仿真}
+
+\section{CMRR 验证}
+
+根据公式 \(\text{CMRR} = A_{v,d}/A_{v,c}\) ，分别对共模输入和差分信号造成的增益进行 AC 仿真，分别如 \figref{05}，\figref{06}，可得 \(A_{v,d} = 250, A_{v,d} = 0.13\) ，那么 \(\text{CMRR} = 250 / 0.13 = 1923\) ，转换为分贝数，\(10 \times \log 1923 = 75.616 DB\) ，满足要求。
+
+
+\qfig[05]{hw05f5.png}{OTA 共模增益}
+
+\qfig[06]{hw05f6.png}{OTA 差分增益}
+
+\end{document}
