@@ -40,6 +40,30 @@
 \[FOM = \frac{GBW * C_L}{I_B}\]
 
 寄生电容的次极点离特征频率远，影响很小。
+
+一阶 OTA 的寄生电容会产生一个零点。高频时，增益减半，虽然频域的作用可以忽略，但是在时域上会极大的影响稳定时间。 
+
+\section{二级 OTA}  
+
+对于一定的功耗下，如何获得最佳的增益带宽积？ 已有公式：
+
+\[GBW = \frac{g_{m1}}{2 \pi C_c}\]
+
+\[f_{nd} = \frac{g_{m6}}{2 \pi C_L (1 + C_{n1}/C_c)}\]
+
+\(C_c\) 通常大于 \(3 C_{n1}\) ，通常小于 \(C_L / 2\) 。
+
+功率的值可以由跨导近似估算。此时 \(C_C = \sqrt{1.5 C_{n1} C_L}\) 。
+
+\begin{itemize}
+    \item 对噪声有要求时，通常先计算 \(g_{m1}\) 。
+    \item 先测试工艺是否满足需求
+\end{itemize}
+ 
+\section*{词汇}
+
+The compensation 补偿
+
 % End Here
 
 \let\chapname\undefined
