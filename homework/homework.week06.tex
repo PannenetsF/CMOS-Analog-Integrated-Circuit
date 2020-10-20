@@ -7,6 +7,7 @@
 \institute{微电子学院 184111 班}
 \date{\zhtoday}
 
+
 \begin{document}
 
 \maketitle
@@ -20,29 +21,76 @@
 
 \listoffigures
 
-
-
 \section{基本参数计算}
 
-接下来将根据一系列公式进行计算。首先，保证输出级特征频率 \(f_t = 16 \cdot GBW\) ，补偿电容和负载电容满足 \(C_c = C_L / \alpha\) ， 寄生电容满足 \(C_{gs6} = C_C / \beta\) ，那么 \(g_{m6} = f_t \cdot 2 \pi C_{gs6} = 0.00209\) ，\(g_{m1} = 2 \pi C_C GBW = 0.000524\) 。估算长度，暂时取 \(n=1\) ，\(L = \sqrt{2 \mu V_{gst6} / (4 \pi f_T)} \approx 1.5 u\) 。估算宽度，\(W_6 = C_{gs6} / k = 208 u\) 。电流按照 \(g_m / 10\) 估算。
+接下来将根据一系列公式进行计算。首先，保证输出级特征频率 \(f_t = \alpha \gamma (1 + \beta) \cdot GBW\) ，补偿电容和负载电容满足 \(C_c = C_L / \alpha\) ， 寄生电容满足 \(C_{gs6} = C_C / \beta\) ，那么 \(g_{m6} = f_t \cdot 2 \pi C_{gs6} = 0.00209\) ，\(g_{m1} = 2 \pi C_C GBW\) 。估算长度，暂时取 \(n=1\) ，\(L = \sqrt{2 \mu V_{gst6} / (4 \pi f_T)}\) 。估算宽度，\(W_6 = C_{gs6} / k\) 。电流按照 \(g_m / 10\) 估算。为了让 \(g_{m6}\) 充分大，并且 \(g_{m6} / g_{m1}\) 充分大，那么 \(\alpha, \gamma \) 也要充分大，最终尝试多次后，\(\alpha \beta \gamma = 6,3,6\) 可以满足条件。
+
+\begin{lstlisting}[caption={估算程序}]
+    import math 
+
+    kn = 280e-6
+    kp = 60e-6
+
+    alpha = 6
+    beta = 3
+    gamma = 6
+    vgst6 = 0.2
+    vgst1 = 0.2
+    vgst3 = 0.2
+
+    mu = 33e-3
+
+    gbw = 50e6
+    cl = 5e-12
+
+    ft = alpha * gamma * (1 + beta) * gbw 
+
+    cc = cl / alpha 
+    cgs6 = cc / beta 
+    gm6 = ft * 2 * math.pi * cgs6
+    gm1 = 2 * math.pi * cc * gbw 
+
+    l = (3 * mu * vgst6 / (4 * math.pi * ft))**0.5
+
+    k = 2e-15/1e-6
+    w6 = cgs6 / k 
+    i6 = gm6/2 * vgst6 
+
+    i1 = gm1/10 
+
+    w1 = 2 * i1 * l / kp / vgst1**2
+    w3 = 2 * i1 * l / kn / vgst3**2
+
+    print('l:u ', l*1e6)
+    print('w6:u ', w6*1e6)
+    print('w1:u ', w1*1e6)
+    print('w3:u ', w3*1e6)
+    print('cc ', cc)
+    print('gm6 ', gm6)
+    print('gm1 ', gm1)
+    print('i6:u ', i6*1e6)
+    print('i1:u ', i1*1e6)
+    print('i6/i1: ', i6/i1)
+    
+\end{lstlisting}
 
 \section{基本电路搭建}
 
-一个基本的 OTA 电路填入计算的参数，计算剩余参数，完成偏置。注意到 \(I_6/I_1 = 4\) ，那么 \(B = 2\) 。
+一个基本的 OTA 电路填入计算的参数，计算剩余参数，完成偏置。
 
 \qfig[01]{hw0601.png}{基本电路图}
 
-最终确定共模电压 \(0.6V\) ，参考电流 \(52.4 uA\) 。电路如 \figref{01} ，参数如 \figref{03} \footnote{由于存在如 \(par(B)*par(Width)\) 的参数，软件显示为 “*Error*” ，但是可以正常仿真。}
+最终确定共模电压 \(0.3V\) ，参考电流 \(26.1 uA\) 。电路如 \figref{01} ，参数如 \figref{03} \footnote{由于存在如 \(par(B)*par(Width)\) 的参数，软件显示为 “*Error*” ，但是可以正常仿真。}
 
 \qfig[03]{hw0603.png}{基本参数设置}
 
 \section{测试平台介绍}
 
-首先进行 OP 仿真确定各个管子的工作状态，如 \figref{02} ，但是第二级的线性区一直存在，诸次修改也无功而反，但是检查跨导之后和估计值几乎吻合，因此保留了下来。
+首先进行 OP 仿真确定各个管子的工作状态，如 \figref{02} 和估计值几乎吻合，因此保留了下来。
 
 \qfig[02]{hw0602.png}{各管状态}
 
-接下来进行增益测试，如 \figref{04} ，\(GBW = 80 \cdot 6.2 M = 500 M\) ，\(PM = 78^\circ\) 。
+接下来进行增益测试，如 \figref{04} ，\(GBW = 64 M\) ，\(PM = 72^\circ\) 。
 
 \qfig[04]{hw0604.png}{增益波形}
 
@@ -50,13 +98,13 @@
 
 \subsection{\(FOM\)}
 
-偏置电流如 \figref{05} ，\(FOM = GBW \cdot C_L / I_B = 500 M 5 pF / (38.64 / 1000 mA) = 64700 MHz pF/mA\) 
+偏置电流如 \figref{05} ，\(FOM = GBW \cdot C_L / I_B = 64M 5 pF / (51.3 / 1000 mA) = 6237MHz pF/mA\) 。
 
 \qfig[05]{hw0605.png}{偏置电流}
 
 \subsection{相位裕度}
 
-\(PM = 78^\circ\) 。
+\(PM = 72^\circ\) 。
 
 \subsection{输入等效噪声}
 
@@ -65,12 +113,12 @@
     \caption{等效输入}
     \centering
     \label{tab:my-tabletab:my-table}
-    \begin{tabular}{|c|c|c|c|c|c}
+    \begin{tabular}{|c|c|c|c|c|c|}
     \hline
     Freq(Hz)                               & 1         & 10        & 100      & 1k         & \multicolumn{1}{c|}{10k}    \\ \hline
-    Noise,eq,in(V/Hz\textasciicircum{}0.5) & 83.3787m  & 30.8746m  & 11.7278m & 4.5441m    & \multicolumn{1}{c|}{1.844m} \\ \hline
-    Freq(Hz)                               & 100k      & 1meg      & 10meg    & 19.9726meg &                             \\ \cline{1-5}
-    Noise,eq,in(V/Hz\textasciicircum{}0.5) & 872.4678u & 200.0779u & 5.1715u  & 1.9504u    &                             \\ \cline{1-5}
+    Noise,eq,in(V/Hz\textasciicircum{}0.5) & 88.9926m  & 31.7779m  & 11.7971m & 4.4839m    & \multicolumn{1}{c|}{1.7283m} \\ \hline
+    100k      & 1meg      & 10meg    & 19.9526meg &   39.8107meg    & 50.1187meg                     \\ \hline 
+    675.9841u & 271.4872u & 40.9206u  & 13.6151u    &  4.9753u       & 3.7160u                   \\ \hline
     \end{tabular}
 \end{table}
 
