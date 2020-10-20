@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  20 OCT 2020 21:53
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  20 OCT 2020 21:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -876,9 +876,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 File: figure/hw0605.png Graphic file (type bmp)
 <figure/hw0605.png>
 
-LaTeX Warning: Reference `tab1' on page 3 undefined on input line 111.
-
-
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 112.
 
@@ -890,16 +887,12 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 129.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
 Package rerunfilecheck Info: File `homework.week06.out' has not changed.
 (rerunfilecheck)             Checksum: 5B04A004C2A6875285EAEE1AE72FFE35;614.
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 22538 strings out of 479682
- 426676 string characters out of 5891585
+ 22537 strings out of 479682
+ 426670 string characters out of 5891585
  1065420 words of memory out of 5000000
- 39412 multiletter control sequences out of 15000+600000
+ 39411 multiletter control sequences out of 15000+600000
  579610 words of font info for 107 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  69i,10n,126p,846b,2289s stack positions out of 5000i,500n,10000p,200000b,80000s
