@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}基本参数计算}{1}{section.1}%
+\contentsline {section}{\numberline {2}基本电路搭建}{2}{section.2}%
+\contentsline {section}{\numberline {3}测试平台介绍}{2}{section.3}%
+\contentsline {section}{\numberline {4}性能评估}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\(FOM\)}{2}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}相位裕度}{2}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}输入等效噪声}{2}{subsection.4.3}%

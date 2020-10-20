@@ -1,0 +1,81 @@
+\documentclass[lang=cn,11pt,a4paper,cite=authoryear]{elegantpaper}
+
+\input{needed.tex}
+
+\title{CMOS模拟集成电路原理\quad 第一周作业}
+\author{范云潜 18373486}
+\institute{微电子学院 184111 班}
+\date{\zhtoday}
+
+\begin{document}
+
+\maketitle
+
+作业内容：已知要求GBW=50MHz，C L =5pF。设计一相位裕度大于70°的米勒运放。通过仿真结果，给出该设计运放的：
+1. FOM
+2. 相位裕度
+3. 输入等效总噪声
+
+\tableofcontents
+
+\listoffigures
+
+
+
+\section{基本参数计算}
+
+接下来将根据一系列公式进行计算。首先，保证输出级特征频率 \(f_t = 16 \cdot GBW\) ，补偿电容和负载电容满足 \(C_c = C_L / \alpha\) ， 寄生电容满足 \(C_{gs6} = C_C / \beta\) ，那么 \(g_{m6} = f_t \cdot 2 \pi C_{gs6} = 0.00209\) ，\(g_{m1} = 2 \pi C_C GBW = 0.000524\) 。估算长度，暂时取 \(n=1\) ，\(L = \sqrt{2 \mu V_{gst6} / (4 \pi f_T)} \approx 1.5 u\) 。估算宽度，\(W_6 = C_{gs6} / k = 208 u\) 。电流按照 \(g_m / 10\) 估算。
+
+\section{基本电路搭建}
+
+一个基本的 OTA 电路填入计算的参数，计算剩余参数，完成偏置。注意到 \(I_6/I_1 = 4\) ，那么 \(B = 2\) 。
+
+\qfig[01]{hw0601.png}{基本电路图}
+
+最终确定共模电压 \(0.6V\) ，参考电流 \(52.4 uA\) 。电路如 \figref{01} ，参数如 \figref{03} \footnote{由于存在如 \(par(B)*par(Width)\) 的参数，软件显示为 “*Error*” ，但是可以正常仿真。}
+
+\qfig[03]{hw0603.png}{基本参数设置}
+
+\section{测试平台介绍}
+
+首先进行 OP 仿真确定各个管子的工作状态，如 \figref{02} ，但是第二级的线性区一直存在，诸次修改也无功而反，但是检查跨导之后和估计值几乎吻合，因此保留了下来。
+
+\qfig[02]{hw0602.png}{各管状态}
+
+接下来进行增益测试，如 \figref{04} ，\(GBW = 80 \cdot 6.2 M = 500 M\) ，\(PM = 78^\circ\) 。
+
+\qfig[04]{hw0604.png}{增益波形}
+
+\section{性能评估}
+
+\subsection{\(FOM\)}
+
+偏置电流如 \figref{05} ，\(FOM = GBW \cdot C_L / I_B = 500 M 5 pF / (38.64 / 1000 mA) = 64700 MHz pF/mA\) 
+
+\qfig[05]{hw0605.png}{偏置电流}
+
+\subsection{相位裕度}
+
+\(PM = 78^\circ\) 。
+
+\subsection{输入等效噪声}
+
+如 \tabref{tab1} 。
+\begin{table}[]
+    \caption{等效输入}
+    \centering
+    \label{tab:my-tabletab:my-table}
+    \begin{tabular}{|c|c|c|c|c|c}
+    \hline
+    Freq(Hz)                               & 1         & 10        & 100      & 1k         & \multicolumn{1}{c|}{10k}    \\ \hline
+    Noise,eq,in(V/Hz\textasciicircum{}0.5) & 83.3787m  & 30.8746m  & 11.7278m & 4.5441m    & \multicolumn{1}{c|}{1.844m} \\ \hline
+    Freq(Hz)                               & 100k      & 1meg      & 10meg    & 19.9726meg &                             \\ \cline{1-5}
+    Noise,eq,in(V/Hz\textasciicircum{}0.5) & 872.4678u & 200.0779u & 5.1715u  & 1.9504u    &                             \\ \cline{1-5}
+    \end{tabular}
+\end{table}
+
+% Start Here
+
+% End Here
+
+\end{document}
