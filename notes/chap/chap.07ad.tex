@@ -1,0 +1,44 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{07ad}
+
+% Start Here
+\chapter{全差分运放}
+
+相比单端输出，有两个输出端口，噪声性能更好，并且数摸混合电路往往需要全差分。需要更大功耗与共模反馈（ CMFB ， Common Mode Feedback）。
+
+需要形成负反馈控制共模偏置。
+
+\section{偏置设置}
+
+输出电压应该是电源电压的一半。
+
+\section{共模反馈要求}
+
+高速： \(GBW_{CM} > GBW_{DM}\) ，反馈快。
+低功耗： 
+
+CMFB 往往工作在单位增益状态（输入输出同端），主要功能：
+
+\begin{itemize}
+    \item 提取输出信号
+    \item 抵消差分
+    \item 形成闭环
+\end{itemize}
+
+\section{线性区电流源}
+
+差分需要线性的抵消。
+
+\section{误差放大器}
+
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
