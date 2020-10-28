@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  27 OCT 2020 21:58
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  28 OCT 2020 21:21
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -818,13 +818,12 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 14.4pt on input line 26.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 14.4pt on input line 26.
-(./homework.week07.lof)
+(./homework.week07.lof [1
+
+])
 \tf@lof=\write5
 \openout5 = `homework.week07.lof'.
 
- [1
-
-]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.95pt on input line 39.
 File: figure/hw07p2.png Graphic file (type bmp)
@@ -833,8 +832,10 @@ File: figure/hw07p3.png Graphic file (type bmp)
 <figure/hw07p3.png>
 File: figure/hw07p4.png Graphic file (type bmp)
 <figure/hw07p4.png>
+ [2]
 File: figure/hw07p5.png Graphic file (type bmp)
 <figure/hw07p5.png>
+ [3]
 File: figure/hw07p6.png Graphic file (type bmp)
 <figure/hw07p6.png>
 File: figure/hw07p8.png Graphic file (type bmp)
@@ -862,30 +863,46 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 
 File: figure/hw07p9.png Graphic file (type bmp)
 <figure/hw07p9.png>
-[2]
 File: figure/hw07p10.png Graphic file (type bmp)
 <figure/hw07p10.png>
- [3]
 File: figure/hw07p11.png Graphic file (type bmp)
 <figure/hw07p11.png>
+[4]
 File: figure/hw07p12.png Graphic file (type bmp)
 <figure/hw07p12.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
- [4] [5] [6] [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+File: figure/hw07p14.png Graphic file (type bmp)
+<figure/hw07p14.png>
+File: figure/hw07p15.png Graphic file (type bmp)
+<figure/hw07p15.png>
+File: figure/hw07p16.png Graphic file (type bmp)
+<figure/hw07p16.png>
+File: figure/hw07p17.png Graphic file (type bmp)
+<figure/hw07p17.png>
+File: figure/hw07p18.png Graphic file (type bmp)
+<figure/hw07p18.png>
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+ [5]
+
+LaTeX Warning: Text page 6 contains only floats.
+
+
+Overfull \vbox (2.08438pt too high) has occurred while \output is active []
+
+ [6] [7] [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
  (./homework.week07.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 106.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
 Package rerunfilecheck Info: File `homework.week07.out' has not changed.
-(rerunfilecheck)             Checksum: 6A2ACCB7495A801CEE5701394FC761C4;300.
+(rerunfilecheck)             Checksum: F46F3A1B6874C1601213A3E00BA2EA96;392.
  ) 
 Here is how much of TeX's memory you used:
- 22426 strings out of 479682
- 422861 string characters out of 5891585
- 961420 words of memory out of 5000000
- 39308 multiletter control sequences out of 15000+600000
+ 22461 strings out of 479682
+ 423411 string characters out of 5891585
+ 959420 words of memory out of 5000000
+ 39338 multiletter control sequences out of 15000+600000
  568625 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  69i,6n,126p,846b,2184s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on homework.week07.pdf (7 pages).
+Output written on homework.week07.pdf (8 pages).
