@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  20 OCT 2020 21:54
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  27 OCT 2020 21:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/pannenetsf/Documents/Subjects/ac/homework/homework.week06
-(/home/pannenetsf/Documents/Subjects/ac/homework/homework.week06.tex
+**/home/pannenetsf/Documents/Subjects/ac/homework/homework.week07
+(/home/pannenetsf/Documents/Subjects/ac/homework/homework.week07.tex
 LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-09-06> (/opt/texlive2020/texmf-dist/tex/latex/elegantpaper/elegantpaper.cls
 Document Class: elegantpaper 2020/04/12 v0.09 ElegantLaTeX Paper class
@@ -678,31 +678,31 @@ File: lstlang2.sty 2020/03/24 1.8d listings language file
 File: lstlang3.sty 2020/03/24 1.8d listings language file
 ) (/opt/texlive2020/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-)) (./needed.tex) (./homework.week06.aux)
-\openout1 = `homework.week06.aux'.
+)) (./needed.tex) (./homework.week07.aux)
+\openout1 = `homework.week07.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 \AtBeginShipoutBox=\box101
-Package hyperref Info: Link coloring ON on input line 11.
+Package hyperref Info: Link coloring ON on input line 10.
  (/opt/texlive2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/opt/texlive2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -712,12 +712,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count346
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
- (./homework.week06.out) (./homework.week06.out)
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
+ (./homework.week07.out) (./homework.week07.out)
 \@outlinefile=\write4
-\openout4 = `homework.week06.out'.
+\openout4 = `homework.week07.out'.
 
 
 *geometry* driver: auto-detecting
@@ -758,7 +758,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 11.
+LaTeX Info: Redefining \selectfont on input line 10.
 \c@mv@tabular=\count347
 \c@mv@boldtabular=\count348
  (/opt/texlive2020/texmf-dist/tex/latex/footmisc/footmisc.sty
@@ -775,18 +775,18 @@ Package footmisc Info: Declaring symbol style lamport*-robust on input line 924.
 )
 \c@lstlisting=\count350
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 17.28pt on input line 13.
+(Font)              scaled to size 17.28pt on input line 12.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 13.
+(Font)              scaled to size 17.28pt on input line 12.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 13.
+(Font)              scaled to size 12.0pt on input line 12.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 13.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
+(Font)              scaled to size 10.0pt on input line 12.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 12.
  (/opt/texlive2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
  (/opt/texlive2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -806,27 +806,44 @@ Package fontspec Info: Font family 'FandolKai-Regular(0)' created for font
 (fontspec)             <->"[FandolKai-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
+Missing character: There is no ❑ in font ntx-Regular-tlf-t1!
+Missing character: There is no ▪ in font ntx-Regular-tlf-t1!
+Missing character: There is no ▪ in font ntx-Regular-tlf-t1!
+Missing character: There is no ▪ in font ntx-Regular-tlf-t1!
+File: figure/hw07p1.png Graphic file (type bmp)
+<figure/hw07p1.png>
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.0pt on input line 24.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 20.
+(Font)              scaled to size 14.4pt on input line 26.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 20.
-(./homework.week06.toc
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.95pt on input line 1.
-)
-\tf@toc=\write5
-\openout5 = `homework.week06.toc'.
+(Font)              scaled to size 14.4pt on input line 26.
+(./homework.week07.lof)
+\tf@lof=\write5
+\openout5 = `homework.week07.lof'.
 
- (./homework.week06.lof)
-\tf@lof=\write6
-\openout6 = `homework.week06.lof'.
-
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 28.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 28.
  [1
 
 ]
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.95pt on input line 39.
+File: figure/hw07p2.png Graphic file (type bmp)
+<figure/hw07p2.png>
+File: figure/hw07p3.png Graphic file (type bmp)
+<figure/hw07p3.png>
+File: figure/hw07p4.png Graphic file (type bmp)
+<figure/hw07p4.png>
+File: figure/hw07p5.png Graphic file (type bmp)
+<figure/hw07p5.png>
+File: figure/hw07p6.png Graphic file (type bmp)
+<figure/hw07p6.png>
+File: figure/hw07p8.png Graphic file (type bmp)
+<figure/hw07p8.png>
+File: figure/hw07p13.png Graphic file (type bmp)
+<figure/hw07p13.png>
+File: figure/hw07p7.png Graphic file (type bmp)
+<figure/hw07p7.png>
+
 
 Package fontspec Warning: Font "FandolFang-Regular" does not contain requested
 (fontspec)                Script "CJK".
@@ -843,58 +860,32 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 (fontspec)             <->"[FandolFang-Regular.otf]/OT:language=dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-File: figure/hw0601.png Graphic file (type bmp)
-<figure/hw0601.png>
+File: figure/hw07p9.png Graphic file (type bmp)
+<figure/hw07p9.png>
 [2]
-LaTeX Font Info:    Trying to load font information for T1+ntxsups on input line 83.
- (/opt/texlive2020/texmf-dist/tex/latex/newtx/t1ntxsups.fd
-File: t1ntxsups.fd 2015/01/17 v1.0
-)
-LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 10.95pt on input line 83.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 83.
-LaTeX Font Info:    Font shape `T1/ntxsups/m/n' will be
-(Font)              scaled to size 9.0pt on input line 83.
-File: figure/hw0603.png Graphic file (type bmp)
-<figure/hw0603.png>
-File: figure/hw0602.png Graphic file (type bmp)
-<figure/hw0602.png>
-File: figure/hw0604.png Graphic file (type bmp)
-<figure/hw0604.png>
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 99.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\(' on input line 99.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\)' on input line 99.
-
-File: figure/hw0605.png Graphic file (type bmp)
-<figure/hw0605.png>
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 112.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 129.
-[3] [4] [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 129.
- (./homework.week06.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 129.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 129.
-Package rerunfilecheck Info: File `homework.week06.out' has not changed.
-(rerunfilecheck)             Checksum: 5B04A004C2A6875285EAEE1AE72FFE35;614.
+File: figure/hw07p10.png Graphic file (type bmp)
+<figure/hw07p10.png>
+ [3]
+File: figure/hw07p11.png Graphic file (type bmp)
+<figure/hw07p11.png>
+File: figure/hw07p12.png Graphic file (type bmp)
+<figure/hw07p12.png>
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
+ [4] [5] [6] [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+ (./homework.week07.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 93.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
+Package rerunfilecheck Info: File `homework.week07.out' has not changed.
+(rerunfilecheck)             Checksum: 6A2ACCB7495A801CEE5701394FC761C4;300.
  ) 
 Here is how much of TeX's memory you used:
- 22537 strings out of 479682
- 426670 string characters out of 5891585
- 1065420 words of memory out of 5000000
- 39411 multiletter control sequences out of 15000+600000
- 579610 words of font info for 107 fonts, out of 8000000 for 9000
+ 22426 strings out of 479682
+ 422861 string characters out of 5891585
+ 961420 words of memory out of 5000000
+ 39308 multiletter control sequences out of 15000+600000
+ 568625 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 69i,10n,126p,846b,2289s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,6n,126p,846b,2184s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on homework.week06.pdf (5 pages).
+Output written on homework.week07.pdf (7 pages).

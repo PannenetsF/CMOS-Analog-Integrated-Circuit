@@ -1,0 +1,51 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{07r2r}
+
+% Start Here
+\chapter{轨到轨}
+
+\section{互补差分对结构}
+
+是解决轨到轨输入的基本思路：\(V_{INCM,N} > 1.1 V, V_{INCM, P} < V_{DD} - 1.1 V\) 在 \(V_{DD} > 2.2 V \) 可实现。当共模输入接近电源上下限的时候，只有一组差分对导通，变化的跨导会导致大量的非线性失真。
+
+因此，我们需要提升两个端点的跨导。
+
+\section{跨导平衡技术}
+
+\subsection{三倍电流镜}
+
+\(g_{mn} + g_{mp} = ct1 \rightarrow \sqrt{I_{BN}} + \sqrt{I_{BP}} = ct3\)
+
+如何自适应产生偏置电流：在不工作时，将另一侧电流增加到 3 倍保证其根号不变。最终波动为 \(\Delta g_m / g_m = 15 \%\) 。
+
+\subsection{稳压二极管/奇纳二极管}
+
+在边缘处，稳压管停止。\(25 \%\)
+
+为了加快电压的变化，使用运放和源随器加快电压变化。 \(6 \%\)
+
+\subsection{亚反型区}
+
+在亚反型区中 \(g_m = \dfrac{I_{D_wi}}{nkT/q}\) ，但是 \(n\) 较难控制。
+
+\[I_{BN} + \frac{n_n}{n_p} I_{BP} = ct\]
+
+\subsection{反馈调制}
+
+副本调制。 \(4\%\) 
+
+
+\section{超低电压的轨到轨}
+
+加入电压偏移电路。
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
