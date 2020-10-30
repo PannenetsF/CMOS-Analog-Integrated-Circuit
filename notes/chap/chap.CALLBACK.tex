@@ -1,0 +1,50 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{CALLBACK}
+
+% Start Here
+\chapter{基本知识点}
+
+\section{晶体管}
+
+分在弱反型区、强反型区和速度饱和区。
+
+核心是 \(g_m / I_{D}\) 。
+
+特征频率是 \(f_T = \dfrac{g_m}{2 \pi C_{GS}}\) 。其中 \(C_{GS} = 2 C_{OX} / 3\) ， \(C_{OX} = WL \epsilon_{ox} / t_{ox}\) ， \(t_{ox} = L_{min} / 50\) 。速度饱和区的边界是 \(0.5 V\) 。
+
+\section{模拟电路的基本构成}
+
+增益 \(A_V = g_m r_{DS} = 2 I_{DS} / (V_{GST}) * V_E L / I_{DS} \) 。
+
+共源共栅极，源极看，逻辑阻抗缩小了 \(A\) 倍，漏极看，源极阻抗增大了 \(A\) 倍。
+
+二极管连接的晶体管，漏极看的电阻是 \(1 / g_m\) 。
+
+漏极看才有可能出现高阻点。
+
+\section{闪烁噪声}
+
+闪烁噪声是由晶体管的面积决定的。
+
+
+\section{失调}
+
+\begin{itemize}
+    \item 阈值电压
+    \item 尺寸
+    \item 半导体参数（较弱）
+\end{itemize}
+
+\section{频响}
+
+相位会对一次的频响进行反复的放大。
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
