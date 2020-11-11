@@ -1,0 +1,43 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{08classAB}
+
+% Start Here
+\chapter{AB 类放大器}
+
+为什么需要推挽输出？输出级只能输出电流，而不能吸收电流。
+
+\section{AB 类}
+
+A 类：偏置电流大于摆幅；B 类：无偏置电流；AB 类：偏置电流小于摆幅。
+
+AB 类是功耗和失真的权衡。
+
+要求轨到轨输出，并精确控制静态电流（低功耗，独立于电源电压），大电流驱动能力，面积尽量小。
+
+驱动能力由 \(I_{out}/I_Q\) 定义， AB 类的输出需要比线性增长更快，而差分对是一个限制因素。
+
+\section{电流控制}
+
+\subsection{交叉耦合差分对}
+
+在无差分时，与未交叉的静态工作点一致；出现差分时，作用在两个管子 \(V_{GS}\) 上。
+
+\subsection{动态偏置}
+
+\subsection{线性跨导}
+
+
+
+
+
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
