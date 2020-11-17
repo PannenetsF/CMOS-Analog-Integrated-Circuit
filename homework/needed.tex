@@ -17,6 +17,8 @@
 
 \newcommand{\dsum}{\displaystyle\sum}
 \newcommand{\aint}{\int_{-\infty}^{+\infty}}
+  
+\usepackage{subcaption}
 
 % 简易图片插入
 \newcommand{\qfig}[3][nolabel]{
@@ -26,6 +28,14 @@
       \caption{#3}
       \label{#1}
   \end{figure}
+}
+
+
+\newcommand{\sfig}[2][0.3]{
+  \begin{subfigure}[b]{#1\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{#2}
+  \end{subfigure}
 }
 
 % 表格
