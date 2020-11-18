@@ -1,0 +1,70 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{10}
+
+% Start Here
+\chapter{ADC \& DAC 奈奎斯特转换器} 
+
+\section{定义}
+
+\subsection{DAC 的分辨率} 
+
+数字模拟的转换器的分辨率为 \(V_{REF} / 2^N\) 
+
+\subsection{量化误差} 
+
+量化噪声是一个白噪声。噪声功率满足 \(P_{noise} = d^2/12\) ，信号峰值满足 \(\dfrac{V_{pp}}{2}\) ，而每一份满足 \(V_{ptp} = 2^N d\)功率为 \(P_{signal} = V_{ptp}^2 / 8\) 。信噪比为 \(SNR = 6 N + 1.76 dB\) 。
+
+\subsection{静态指标}
+
+定义 \(DNI)\) 差分非线性度和 \(INL\) 积分非线性度。
+
+\subsection{动态指标}
+
+DAC 存在响应时间 \(settling time\) 。无杂散动态范围：基波与最大谐波的比值。信噪失真比。最大位数。
+
+信号输入越大，信噪比越高。
+
+\section{DAC} 
+
+\subsection{电阻型}
+
+电阻与开关太多，且电阻难匹配。
+
+\subsection{二进制权重电阻}
+
+对匹配要求更高，匹配精度在 6-8 位。
+
+\subsection{阶梯型}
+
+每个节点的等效电阻一致，在10位左右，虚地很关键，对增益有要求。
+
+\subsection{电容型}
+
+基本步骤是 1) 电容采样， 2) 电容放大。电荷转移到跨接到运放的电容上。
+
+\subsection{电流转换}
+
+转换精度的限制：电流镜。
+
+\section{ADC} 
+
+速度和精度的平衡。
+
+\subsection{积分型}
+
+放电计时。分辨率高，线性度好，复杂度低，但是速度慢。
+
+\subsection{逐次逼近型}
+
+ADC = DAC + compare
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 
