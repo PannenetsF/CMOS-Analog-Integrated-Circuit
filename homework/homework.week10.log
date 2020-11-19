@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  17 NOV 2020 15:13
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.9.9)  19 NOV 2020 17:01
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -870,18 +870,18 @@ File: figure/hw10p8.png Graphic file (type bmp)
 <figure/hw10p8.png>
 File: figure/hw10p10.png Graphic file (type bmp)
 <figure/hw10p10.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
- [4] [5] [6] [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
+ [4] [5]
+
+LaTeX Warning: Text page 6 contains only floats.
+
+[6] [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
  (./homework.week10.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 122.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 120.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `homework.week10.out' has not changed.
 (rerunfilecheck)             Checksum: 4EE97715C811C42B01E1B25F7F4060E1;1125.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  21352 strings out of 479682
