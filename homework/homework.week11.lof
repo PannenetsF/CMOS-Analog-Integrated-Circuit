@@ -1,0 +1,12 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces 对输入信号进行采样\relax }}{2}{figure.caption.3}%
+\contentsline {figure}{\numberline {2}{\ignorespaces 对输入信号进行保持\relax }}{2}{figure.caption.4}%
+\contentsline {figure}{\numberline {3}{\ignorespaces 逐次逼近信号大小\relax }}{2}{figure.caption.5}%
+\contentsline {figure}{\numberline {4}{\ignorespaces 断开回路的电容采样电压\relax }}{3}{figure.caption.6}%
+\contentsline {figure}{\numberline {5}{\ignorespaces 转换完成后输出中断信号\relax }}{3}{figure.caption.7}%
+\contentsline {figure}{\numberline {6}{\ignorespaces SAR 模块接口\relax }}{4}{figure.caption.8}%
+\contentsline {figure}{\numberline {7}{\ignorespaces 多路选择器内部设计\relax }}{4}{figure.caption.9}%
+\contentsline {figure}{\numberline {8}{\ignorespaces SAR ADC 整体设计\relax }}{5}{figure.caption.10}%
+\contentsline {figure}{\numberline {9}{\ignorespaces 封装测试台示意图\relax }}{5}{figure.caption.11}%
+\contentsline {figure}{\numberline {10}{\ignorespaces 数模混合配置\relax }}{5}{figure.caption.12}%
+\contentsline {figure}{\numberline {11}{\ignorespaces ADC 采样输出波形\relax }}{5}{figure.caption.13}%
+\contentsline {figure}{\numberline {12}{\ignorespaces ADC 采样输出中断间隔\relax }}{6}{figure.caption.14}%

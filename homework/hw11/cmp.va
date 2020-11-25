@@ -1,0 +1,12 @@
+module comparator(sigin, sigref, sigout);
+    input sigin, sigref;
+    output sigout;
+    electrical sigin, sigref, sigout;
+    parameter real sigout_high = 1.8;
+    parameter real sigout_low = 0;
+    parameter real sigin_offset = 0;
+    parameter real comp_slope = 1000;
+    analog begin
+        V(sigout) <+ 0.5 * (sigout_high - sigout_low) * tanh(comp_slope*(V(sigin,sigref)- sigin_offset)) + (sigout_high + sigout_low)/2;
+    end 
+endmodule

@@ -1,0 +1,104 @@
+\documentclass[lang=cn,11pt,a4paper,cite=authoryear]{elegantpaper}
+
+\input{needed.tex}
+
+\title{CMOS模拟集成电路原理\quad 第十一周作业}
+\author{范云潜 18373486}
+\institute{微电子学院 184111 班}
+\date{\zhtoday}
+
+\begin{document}
+
+\maketitle
+
+% 作业内容：
+
+\tableofcontents
+
+\listoffigures
+
+\section{流程简述}
+
+SAR-ADC （Successive-approximation Register ADC） 是利用 DAC 模块逐次二分逼近最终得到合适的 ADC 值的一种方法。接下来简要介绍整体流程。
+
+\begin{enumerate}
+    \item 在一次转换的开始，如 \figref{01} ，对输入信号进行采样，所有由 DAC 输出控制的开关摆向底板，底板连接到输入信号，采样端此时需要接地，那么电容两端的电势差为 \(0 - V_{in}\) 。
+    \item 采样完成后，需要将得到的信号进行保持，如 \figref{02} ，将所有由 DAC 控制的开关摆向地，将底板接到参考电压，采样端断开，此时电容的通路断开，不能放电，将所有的电荷保持住，采样的电压被拉到 \(- V_{in}\) ，如 \figref{04} 。
+    \item 接下来进行逐次的比较，从最高位开始进行比较，如 \figref{03} ，将 DAC 输出的最高位置为高，此时的采样电压为 \(V_{ref} 2^{-1} - V_{in }\) ，比较 DAC 对应的电压与采样的电压的关系，若是不足则保持本位的输出，反之，取消本位。
+    \item 对其他位依次进行以上操作，直到比较完成，向外部发出中断，标志本次转换已经完成，如 \figref{05} 。
+\end{enumerate}
+
+
+\qfig[01]{hw11p1.png}{对输入信号进行采样}
+
+\qfig[02]{hw11p2.png}{对输入信号进行保持}
+
+\qfig[03]{hw11p3.png}{逐次逼近信号大小}
+
+\qfig[04]{hw11p4.png}{断开回路的电容采样电压}
+
+\qfig[05]{hw11p5.png}{转换完成后输出中断信号}
+
+\section{逼近器设计}
+
+首先，作为一个时序逻辑数字模块，需要存在某种形式的时钟信号与复位信号，实际使用的模块还需要使用使能信号来启用模块以及启动信号。另外，根据上一节的分析，需要使用采样/保持信号，以及比较结果作为输入进行比较，需要每位控制开关的数据信号\footnote{同时也是系统的输出}。据此定义模块的端口。
+
+\begin{lstlisting}
+module sar (
+    clk,
+    reset,
+    en,
+    start,
+    intr,
+    hold,
+    cmp,
+    data
+);
+
+// the timing signal and control signal 
+input clk, reset, en, start;
+// the interrupt and discharge 
+output reg intr, hold;
+
+// the result of comparator 
+input cmp;
+// the output of SAR 
+output reg [4:0] data;
+\end{lstlisting}
+
+接下来定义各个状态，状态之间的转换关系如下：
+
+\begin{itemize}
+    \item \lstinline{idle}：等待开始信号，之后转换到 \lstinline{init} 。此时，不进行保持。
+    \item \lstinline{init}：DAC 输出的信号为全高，直接转换到 \lstinline{ready}。
+    \item \lstinline{ready}：此时开始保持，进行采样，进入 \lstinline{compare} 。
+    \item \lstinline{compare}：修改输出的数据，进入\lstinline{check} 。
+    \item \lstinline{check}：对来自比较器的数据进行检测，决定下一状态的数据。
+\end{itemize}
+
+\section{设计过程}
+
+设计的数字模块如 \figref{08} ，设计的多路选择器如 \figref{09}，模块整体如 \figref{10} ，封装后如 \figref{11}，其配置文件如 \figref{12} 。
+
+\qfig[08]{hw11p8.png}{SAR 模块接口}
+
+\qfig[09]{hw11p9.png}{多路选择器内部设计}
+
+\qfig[10]{hw11p10.png}{SAR ADC 整体设计}
+
+\qfig[11]{hw11p11.png}{封装测试台示意图}
+
+\qfig[12]{hw11p12.png}{数模混合配置}
+
+\section{实验结果}
+
+ADC 的输出如 \figref{06} ，间隔见 \figref{07} 其中可见运行的中断存在，中断间隔小于 \(1 us\) ，满足要求。
+
+\qfig[06]{hw11p6.png}{ADC 采样输出波形}
+
+\qfig[07]{hw11p7.png}{ADC 采样输出中断间隔}
+% Start Here
+
+% End Here
+
+\end{document}
