@@ -1,4 +1,0 @@
-\contentsline {section}{\numberline {1}流程简述}{1}{section.1}%
-\contentsline {section}{\numberline {2}逼近器设计}{3}{section.2}%
-\contentsline {section}{\numberline {3}设计过程}{4}{section.3}%
-\contentsline {section}{\numberline {4}实验结果}{4}{section.4}%
