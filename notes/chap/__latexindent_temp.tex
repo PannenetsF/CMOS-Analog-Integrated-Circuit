@@ -1,0 +1,236 @@
+\ifx\mainclass\undefined
+\documentclass[cn,11pt,chinese,black,simple]{../elegantbook}
+\input{../needed.tex}
+\begin{document}
+\fi 
+\def\chapname{01mosfet}
+
+% Start Here
+\chapter{MOSFET}
+
+\section*{回顾}
+
+MOS 的晶体电流公式:
+
+线性区时： 
+
+\[
+I_d = \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th} - \frac{1}{2} V_{ds}) V_{ds} 
+\]
+
+饱和区时：
+
+\[
+I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
+\]
+
+\section{线性区：电阻}
+
+在线性区满足 \(V_{DS} < V_{GS} - V_{th}\)，当沟道打开时，沟道高度与 \(V_{gs}\) 成比例，通过面积法理解电流中的 \(V_{ds}/2 \) 来源。
+
+小信号的导通电阻求解为：
+
+\[
+R = \frac{\pp{V}}{\pp{I}} \approx \frac{1}{\mu_0 C_{ox} \dfrac{W}{L} (V_{gs} - V_{th}) }  
+\]
+
+
+电子迁移率大概是 \(\mu_n \approx 600 \text{cm}^2/Vs\)， \(\mu_p \approx 250 \text{cm}^2/Vs\) 。 栅氧层电容 \(C_{ox} = \frac{\epsilon_{ox}}{t_{ox}}\) ，基本可以按照特征尺寸 \(L_{min}\) 估计栅氧厚度 \(t_{ox} = \dfrac{L_{min}}{50}\) 。一般使用 \(\text{cm}^2\) 相关的单位。定义工艺量 \(KP_{n} = \mu_n C_{ox,n}\)。
+
+根据以上的知识可以对 MOSFET 的电阻进行快速的估算。工艺越小，由于特征尺寸小，电阻更小； PMOS 由于迁移率小，电阻更大。
+
+\section{饱和区：放大器}
+
+在 \(V_{ds} > V_{gs} - V_{th}\) 时，进入饱和区。对于\(I_d\)公式，如何理解其系数 \(1/2\) 以及平方项：
+
+
+\[
+I_d = \frac{1}{2} \mu_0 C_{ox} \frac{W}{L} (V_{gs} - V_{th})^2
+\]
+
+同样是通过沟道图理解， \(V_{ds}\) 最多造成 \(V_{gs} - V_{th}\) 的影响，沟道越长，调制效应越小。
+
+其跨导定义如下，最后一种形式最常见，需要记忆：和 \(I_d\) 直接相关，商为能量效率。
+
+\[
+\begin{aligned}
+    g_m = \frac{\pp{I_d}}{\pp{V_{gs}}} &= \mu_0 C_{ox} \frac{W}{L}(V_{gs} - V_{th}) \\
+    &= \sqrt{{2 I_d \cdot \mu_0 C_{ox} \frac{W}{L}\\
+    &= \frac{2 I_d}{V_{gs} - V_{th}}
+\end{aligned}
+\]
+
+可以看到，跨导和漏极电流有着密切的要求，对于 \(g_m \propto \sqrt{I_d}\) 在测试中尺寸是固定的，对于 \(g_m \propto I_d\) 在设计中偏置固定。
+
+其输出电阻 \(r_0 = V_{ds} / I_d \approx 1 / (\lambda I_d)\) 。\(\lambda = 1/(V_E \cdot L)\) , \(V_E\) 是工艺相关的量，\(L\) 是沟道长度。一般来说，\(V_{E,n} = 4 \text{V/}\mu m\)，\(L = 1 \mu m\)
+
+\subsection{单晶体管放大器}
+
+对于共源放大器：
+
+\[A = g_m r_0 = \frac{2 I_d}{V_{gs} - V_{th}} \cdot \frac{V_E L}{I_D} = \frac{2 V_E L}{V_{gs} - V_{th}}\]
+
+其中 \(V_{gs} - V_{th} \approx 0.2 V\)
+
+运算放大器的设计存在 Trade-off 如 \tabref{tab:01:1}：对于 \(g_m \approx \frac{2 I_{ds}}{V_{gs} - V_{th}}\) ，\(A = \dfrac{2 V_E L}{V_{gs} - V_{th}}\)，跨导越大，速度越快。
+
+\begin{table}[htb]
+    \centering
+    \caption{Trade-off}\label{tab:01:1}
+    \begin{tabular}{lll}
+        \hline
+        & 高增益  & 高速   \\ \hline
+\(V_{gs}-V_{th}\) & down & up   \\
+\(L\)             & up   & down \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{弱反型区}
+
+对于弱反型区有，其中 \(n > 1\) 
+
+\[I_{d,wi} = I_{d0} \frac{W}{L} e^{\frac{V_{gs}}{nkT/q}}\]
+
+\[g_{m,wi} = I_{d,wi} \frac{1}{n k T / q}\]
+
+场效应管是一个水平的 BJT 三极管，漏极的反向偏置相册二极管，栅级电压的增加会降低二极管的电势壁垒，主要电流为扩散电流而不是漂移电流，导电的通道中电势几乎不变，但是离子浓度成线性变化。
+
+\[I_{d,wi} = I_{d0} \frac{W}{L} e^{\frac{V_{gs}}{nU_T}} \cdot \left[1 - exp(-\frac{V_{ds}}{U_T})\right]\] 
+
+其中 
+
+\[I_{d0} = \mu_n C_{ox} (n - 1) U_t^2 e^{-V_{th}/(nV_t)}, \text{ where } U_t = \frac{kT}{q}\]
+
+\[n = \frac{C_{ox} + C_{depl}}{C_{ox}}\approx 1.5\]
+
+对 \(V_{ds} > 4 U_T\) 称为饱和，最后一项可以忽略。利用强反型区和弱反型区跨导相等时的电压条件，可以计算其交界点，约为\(V_{gs}-V_{th} = 2 n k T / q \approx 70 mV \)，这是和工艺独立的。此时电流约为零点几个微安。保证 \(V_{gs} - V_{th} > 0.2 V\) 可以保证不同工艺中均在强反型区工作。
+
+对于强反型区能量效率为 \(2 / (V_{gs}-V_{th})\)，一般为20，弱反型区的效率几乎是一个常数。
+
+相应的，在电压过大之后，还会进入到速度饱和区。
+
+\section{弱反型区以及强反型区：EKV 模型}
+
+得到的曲线在两端可以拟合
+
+\[I(v) = K' \frac{W}{L} V_{GSTt}^2 \ln^2(1 + e^v), \text{ where } v = \frac{V_{{GST}}}{V_{GSTt}}\]
+
+\[\text{where } V_{GSTt} = (V_{GS}-V_T)_t = 2n\frac{KT}{q}\]
+
+定义反型系数\[i = \frac{I_{DS}}{I_{DSt}} = \ln^2(1+e^v)\]
+
+那么\[v = \ln(e^{\sqrt{i}}-1)\]
+
+那么\[V_{GST}=V_{GSTt} \ln(e^{\sqrt{i}}-1) \]
+
+晶体管的最大 \(g_m/I_{DS}\)出现在弱反型区，且随着反型效率上升而下降。定义归一化效率为
+
+\[GM/ID = \frac{g_m/I_{DS}}{(g_m/I_{DS})_{max}} = \frac{1-e^{\sqrt{i}}}{\sqrt{i}}\]
+
+因此需要在跨导值和跨导效率进行权衡，一般取 \(200 mV\) 。
+
+两个区之间存在一个平滑状态，一般这样定义
+
+\[\left\{\begin{aligned}
+    V_{GS} < V_{T} - 100 mV, &\text{ 弱反型}\\
+    V_{T} - 100 mV < V_{GS} < V_{T} + 100 mV, &\text{ 平滑过渡}\\
+    V_{GS} > V_{T} + 100 mV, &\text{ 强反型}\\
+\end{aligned}\right.\]
+
+
+\section{速度饱和区}
+
+\textbf{为什么饱和区电流存在 \(V_{GS}\) 平方项？}
+
+\(V_{GS}\) 控制两个量，一个是通道的深度，一个是两端的电压。
+
+\textbf{为什么速度饱和区跨导却成线性？}
+
+在速度饱和区中，电子已经以最大速度通过，电流随着两端驱动电压线性变化。将 \(C_{ox} (V_{GS} - V_T) \) 看作是导电沟道的高度。
+
+\[I_{DS,{vs}} = W C_{ox} (V_{GS} - V_T) v_{sat}\]
+
+其中 \(v_{sat} \approx 10^7 cm/s\) ，此时 \(g_{m,sat} = W C_{ox} v_{sat}\) 达到了最大。此时的 \(g_m/W\) 仅与物理常数有关，一般在模拟电路中不使用这个区域。
+
+强反型区和速度饱和区分别满足跨导关系，可以得到过渡的电压，\(V_{GS} - V_{TH} \approx 0.58 V \)。
+
+\[\left\{\begin{aligned}
+    g_{m,si} &= \mu_0 C_{ox} \frac{W}{L} (V_{GS} - V_T) \\
+    g_{m,sat} &= W C_{ox} v_{sat}
+\end{aligned}\right\}\]
+
+继续探索统一表示的可能，由于实际的跨导满足 \(g_m = \min (g_{m,si}, g_{m,sat})\)，可以如此估算：
+
+\[\frac{1}{g_m} = \frac{1}{g_{m,si}} + \frac{1}{g_{m,sat}}\]
+
+
+其他因素：
+
+Drain-Induced Barrier Lowering: 沟道过小时，会导致电压的改变直接作用到另一端。
+
+Surface Scattering: 纵向电压过大时，由于栅级的反弹，会导致电子往复纵向运动，电流减小。
+
+Impact inonize: 
+
+\section{特征频率}
+
+超过特征频率之后，就认为晶体管失去放大作用，一般由跨导和计生电容决定。跨导标志了驱动外部电压的能力。电容包括，氧化层电容，交叠区电容，PN结电容。
+
+\[C_{GS} \approx\frac{2}{3} WLC_{ox}\]
+
+\[C_{GD} = W C_{gdo}\]
+
+达到特征频率时，\(i_{GS} = i_{DS}\) 
+
+即 \[v_{GS} C_{GS} s = g_m v_{GS}\] 
+
+\[C_{GS} = \frac{2}{3} WL C_{ox}\]
+
+\[g_m = 2 K' \frac{W}{L} (V_{GS} - V_T)\]
+
+其中 
+
+\[K' = \frac{\mu C_{ox}}{2 n}\]
+
+
+解得
+
+\[f_T = \frac{g_m}{2 \pi C_{GS}} = \frac{1}{2 \pi} \frac{3}{2n} \frac{\mu}{L^2}(V_{GS}-V_T), \text{ 反型区}\] 
+
+\[f_T = \frac{v_{sat}}{2 \pi L}, \text{ 饱和区}\]
+
+\[f_m = \frac{f_T}{1 + \alpha_{BD} } ,\text{ where} \alpha_{BD} \approx \frac{C_{BD}}{C_{ox}}\]
+
+在弱反型区：
+
+\[GM/ID = \frac{g_m/I_{ds}}{(g_m // I_{ds})_{max}} = \frac{1 - e^{-\sqrt{i}}}{\sqrt{i}}, \text{ where } i = \frac{I_{ds}}{I_{dst}}\]
+
+% \[\begin{aligned}
+%     f_T = \frac{g_m}{2\pi C_{GS}} = &\frac{1}{2 \pi C_{gs}} \frac{I_{dst}}{nkT/q} \sqrt{i} (1 - e^\sqrt{i}) \\
+%     = &\frac{2 \mu k T/q}{2 \pi L^2} \sqrt{i} (1-e^\sqrt{i})
+% \end{aligned}\]
+
+\[\begin{aligned}
+    f_T = \frac{g_m}{2 \pi C_{gs}} &= \frac{1}{2 \pi C_{gs}} \frac{I_{dst}}{nkT/q}\sqrt{i}(1-e^{\sqrt{i}})\\
+    &= \frac{2 \mu kT/q}{2 \pi L^2} \sqrt{i} (1 - e^{\sqrt{i}})
+\end{aligned}\]
+
+第一部分是与尺寸有关的，第二部分与工作偏置有关。
+
+
+\section{总结}
+
+设计思路：
+
+\begin{itemize}
+    \item 手工计算估计尺寸，精确设计依赖仿真
+    \item 时刻牢记 \(g_m/I_D\) 曲线以及大致数值
+    \item 低功耗\(V_{gs}-T_{th} < -0.1 V\)，高增益\(V_{gs}-T_{th} = 0.2 V\)，高速\(V_{gs}-T_{th} = 0.5 V\)
+\end{itemize}
+
+% End Here
+
+\let\chapname\undefined
+\ifx\mainclass\undefined
+\end{document}
+\fi 

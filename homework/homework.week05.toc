@@ -1,7 +1,0 @@
-\contentsline {section}{\numberline {1}作业内容}{2}{section.1}%
-\contentsline {section}{\numberline {2}系统性失调}{2}{section.2}%
-\contentsline {section}{\numberline {3}随机性失调}{2}{section.3}%
-\contentsline {section}{\numberline {4}电路搭建}{3}{section.4}%
-\contentsline {section}{\numberline {5}系统性失调验证}{3}{section.5}%
-\contentsline {section}{\numberline {6}随机性失调验证}{4}{section.6}%
-\contentsline {section}{\numberline {7}CMRR 验证}{5}{section.7}%
